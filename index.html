@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports Predictor Pro - Daily Football Predictions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .ad-space { background: linear-gradient(135deg, #fef08a 0%, #fde047 100%); }
+        .match-card:hover { transform: translateY(-2px); transition: all 0.3s ease; }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- TOP BANNER AD -->
+    <div class="ad-space text-center py-2 text-sm font-bold text-black border-b border-yellow-600">
+        📢 ADVERTISEMENT - Your Ad Here (Top Banner) - Contact: ads@yourdomain.com
+    </div>
+
+    <!-- HEADER -->
+    <header class="bg-white shadow-md sticky top-0 z-10">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center flex-wrap gap-3">
+            <div>
+                <h1 class="text-2xl md:text-3xl font-black">
+                    <span class="text-green-700">⚽ SPORTS</span>
+                    <span class="text-black">PREDICTOR PRO</span>
+                </h1>
+                <p class="text-gray-500 text-sm">Daily football predictions & tips</p>
+            </div>
+            <button onclick="toggleAdmin()" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-bold text-sm transition">
+                👑 ADMIN PANEL
+            </button>
+        </div>
+    </header>
+
+    <!-- ADMIN PANEL (Hidden by default) -->
+    <div id="adminPanel" class="hidden bg-gray-800 text-white p-5 shadow-lg">
+        <div class="container mx-auto">
+            <h2 class="text-xl font-bold mb-3">🔧 Admin Controls</h2>
+            <p class="text-gray-300 text-sm mb-4">
+                📝 <strong>To add/update matches for tomorrow:</strong><br>
+                1. Go to GitHub → Edit this file (`index.html`)<br>
+                2. Find the <code class="bg-gray-700 px-1 rounded">matchesData</code> array (line ~85)<br>
+                3. Add or modify matches using the format below<br>
+                4. Click "Commit changes" → Site updates in 30 seconds
+            </p>
+            <div class="bg-gray-700 p-3 rounded text-sm font-mono">
+                { league: "🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League", time: "17:30", home: "Arsenal", away: "Chelsea", prediction: "1", confidence: "High", odds: "1.85" }
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="container mx-auto px-4 py-6">
+
+        <!-- HERO SECTION -->
+        <div class="bg-gradient-to-r from-green-700 to-green-800 text-white rounded-xl p-6 mb-8 text-center shadow-lg">
+            <h2 class="text-2xl font-bold mb-2">🏆 100% SURE FOOTBALL PREDICTIONS</h2>
+            <p class="text-green-100">Well analysed 1X2, Over/Under, BTTS & Correct Score tips. Used daily by punters in Kenya, Nigeria, Ghana, UK & USA.</p>
+        </div>
+
+        <!-- STATS BANNER -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <div class="bg-white rounded-lg p-4 text-center shadow"><span class="text-2xl font-bold text-green-600">800+</span><p class="text-gray-500 text-sm">Subscribed Users</p></div>
+            <div class="bg-white rounded-lg p-4 text-center shadow"><span class="text-2xl font-bold text-green-600">8+</span><p class="text-gray-500 text-sm">Daily Games</p></div>
+            <div class="bg-white rounded-lg p-4 text-center shadow"><span class="text-2xl font-bold text-green-600">80%</span><p class="text-gray-500 text-sm">Accuracy Rate</p></div>
+            <div class="bg-white rounded-lg p-4 text-center shadow"><span class="text-2xl font-bold text-green-600">1500+</span><p class="text-gray-500 text-sm">Satisfied Clients</p></div>
+        </div>
+
+        <!-- TODAY'S DATE -->
+        <h3 class="text-gray-600 border-b pb-2 mb-4 font-semibold" id="todayDate"></h3>
+
+        <!-- MATCHES CONTAINER -->
+        <div id="matchesContainer" class="space-y-4"></div>
+
+        <!-- SIDEBAR AD SECTION -->
+        <div class="grid md:grid-cols-3 gap-6 mt-8">
+            <div class="md:col-span-2 bg-yellow-50 rounded-xl p-5 text-center border border-yellow-200">
+                <h3 class="font-bold text-black text-lg">⭐ PREMIUM TIPS - 95% WINNING RATE</h3>
+                <p class="text-sm text-gray-600 mt-1">Get our sure "2 to 5" daily Football Predictions. Maximum profits guaranteed!</p>
+                <button class="mt-3 bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg text-sm font-bold transition">Chat on WhatsApp →</button>
+            </div>
+            <div class="bg-gray-200 rounded-xl p-5 text-center">
+                <p class="text-gray-500 text-xs">ADVERTISEMENT</p>
+                <p class="font-bold text-gray-700 mt-2">📺 Sidebar Banner</p>
+                <p class="text-xs text-gray-500 mt-1">Premium placement - Contact for rates</p>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="mt-10 pt-5 border-t border-gray-300 text-center text-gray-500 text-sm">
+            <p>© 2024 Sports Predictor Pro — For entertainment only. 18+ only. Predictions are opinions, not guarantees.</p>
+            <p class="mt-2 text-xs">📢 Footer Ad Space - Email: ads@yourdomain.com</p>
+        </footer>
+    </main>
+
+    <script>
+        // ============================================
+        // 📝 YOUR DAILY EDIT ZONE - Change matches here!
+        // Add, remove, or modify matches for each day
+        // ============================================
+        const matchesData = [
+            { league: "🇪🇸 La Liga", time: "22:00", home: "Real Betis", away: "Real Madrid", prediction: "2", confidence: "High", odds: "1.85" },
+            { league: "🇮🇩 Liga 1", time: "13:00", home: "Persib Bandung", away: "Arema FC", prediction: "1", confidence: "Norm", odds: "1.90" },
+            { league: "🇧🇪 Pro League", time: "19:45", home: "Cercle Brugge", away: "Dender", prediction: "1X", confidence: "High", odds: "1.65" },
+            { league: "🇮🇹 Serie A", time: "19:45", home: "Napoli", away: "Cremonese", prediction: "1", confidence: "High", odds: "1.50" },
+            { league: "🏴󠁧󠁢󠁳󠁣󠁴󠁿 Championship", time: "19:45", home: "ST Johnstone", away: "Raith Rovers", prediction: "1X", confidence: "Norm", odds: "1.75" },
+            { league: "🇹🇷 Süper Lig", time: "20:00", home: "Galatasaray", away: "Fenerbahçe", prediction: "X", confidence: "High", odds: "3.20" },
+            { league: "🏴󠁧󠁢󠁥󠁮󠁧󠁿 Championship", time: "21:00", home: "Leeds United", away: "Southampton", prediction: "1", confidence: "High", odds: "1.95" }
+        ];
+        // ============================================
+
+        function renderMatches() {
+            const container = document.getElementById('matchesContainer');
+            if (!container) return;
+            
+            container.innerHTML = matchesData.map(match => `
+                <div class="match-card bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden transition">
+                    <div class="bg-gray-50 px-5 py-2 text-xs text-gray-600 font-semibold flex justify-between border-b">
+                        <span>${match.league}</span>
+                        <span>⏰ ${match.time}</span>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex justify-between items-center text-center">
+                            <div class="flex-1 font-bold text-lg md:text-xl">${match.home}</div>
+                            <div class="text-gray-400 font-bold px-4">VS</div>
+                            <div class="flex-1 font-bold text-lg md:text-xl">${match.away}</div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-3 mt-5 text-center">
+                            <div class="bg-green-50 p-3 rounded-lg"><span class="font-bold text-green-700 block text-sm">1X2 TIP</span><span class="font-black text-lg">${match.prediction}</span></div>
+                            <div class="bg-blue-50 p-3 rounded-lg"><span class="font-bold text-blue-700 block text-sm">CONFIDENCE</span><span class="font-black text-lg">${match.confidence}</span></div>
+                            <div class="bg-purple-50 p-3 rounded-lg"><span class="font-bold text-purple-700 block text-sm">ODDS</span><span class="font-black text-lg">${match.odds}</span></div>
+                        </div>
+                        <div class="mt-4 flex justify-between items-center gap-3 flex-wrap">
+                            <button class="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-lg text-sm font-bold transition">View Tips ›</button>
+                            <div class="text-xs text-gray-400 bg-gray-50 px-3 py-1.5 rounded-full">📢 In-Feed Ad Space</div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function toggleAdmin() {
+            const panel = document.getElementById('adminPanel');
+            panel.classList.toggle('hidden');
+        }
+
+        // Set today's date
+        const today = new Date();
+        const formattedDate = today.toISOString().slice(0,10);
+        document.getElementById('todayDate').innerHTML = `📅 Soccer Games by date: ${formattedDate}`;
+        
+        // Load matches
+        renderMatches();
+    </script>
+</body>
+</html>
