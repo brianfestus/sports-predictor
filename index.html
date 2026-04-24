@@ -33,7 +33,7 @@
     <!-- Tailwind CSS + Font Awesome -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google AdSense (Test / ready mode) -->
+    <!-- Google AdSense (Test / ready mode - replace with your own publisher ID later) -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3940256099942544" crossorigin="anonymous"></script>
     
     <style>
@@ -62,10 +62,11 @@
 </head>
 <body class="bg-gray-100 font-sans">
 
-<!-- TOP BANNER AD SPACE -->
+<!-- ========== TOP BANNER AD SPACE (AD #1 - CLEAN DISPLAY AD) ========== -->
 <div class="bg-white border-b border-gray-200 shadow-sm">
     <div class="container mx-auto px-4 py-2 text-center">
         <div id="top-ad" class="ad-container bg-gray-50">
+            <!-- This placeholder is ready for Google AdSense or other display network code -->
             <span class="text-gray-500 text-sm"><i class="fas fa-ad"></i> 728x90 Banner Ad – Google AdSense Ready</span>
         </div>
     </div>
@@ -137,18 +138,19 @@
                     </table>
                 </div>
             </div>
-            <!-- IN-FEED AD SPACE -->
+            <!-- ========== IN-FEED AD SPACE (AD #2 - between matches section) ========== -->
             <div id="infeed-ad" class="ad-container mt-6">
-                <span class="text-gray-500 text-sm"><i class="fas fa-ad"></i> In-Feed Ad – Perfect for native ads</span>
+                <span class="text-gray-500 text-sm"><i class="fas fa-ad"></i> In-Feed Ad – Perfect for native ads (AdSense ready)</span>
             </div>
         </div>
 
         <!-- RIGHT SIDEBAR -->
         <div class="space-y-6">
-            <!-- SIDEBAR AD -->
-            <div id="sidebar-ad" class="ad-container flex-col gap-2 p-4 bg-white shadow">
+            <!-- ========== SIDEBAR AD (AD #3 - 300x250 display ad) ========== -->
+            <div id="sidebar-ad" class="ad-container flex-col gap-2 p-4 bg-white shadow" style="min-height: 260px;">
                 <i class="fas fa-ad text-gray-400"></i>
-                <span class="text-gray-500 text-xs">300x250 Sidebar Ad – Google AdSense</span>
+                <span class="text-gray-500 text-xs">300x250 Sidebar Ad – Google AdSense Ready</span>
+                <div class="text-[10px] text-gray-400 mt-1">Replace this with AdSense code</div>
             </div>
 
             <!-- LEADERBOARD -->
@@ -170,14 +172,14 @@
         </div>
     </div>
 
-    <!-- FOOTER AD BANNER -->
+    <!-- ========== FOOTER AD BANNER (AD #4 - optional, could be merged but kept clean) ========== -->
     <div id="footer-ad" class="ad-container mt-10">
         <span class="text-gray-500 text-sm"><i class="fas fa-ad"></i> Footer Banner – 728x90 (AdSense ready)</span>
     </div>
 
     <footer class="text-center text-gray-500 text-xs mt-8 border-t pt-6">
-        <p>© 2024 PredictZone Africa — For entertainment only. 18+ only. Predictions are opinions, not guarantees.</p>
-        <p class="mt-1">📍 Official domain: predictzone.is-a.dev (coming) | 📢 Ad spaces ready for Google AdSense</p>
+        <p>© 2025 PredictZone Africa — For entertainment only. 18+ only. Predictions are opinions, not guarantees.</p>
+        <p class="mt-1">📍 Ad spaces: Top Banner | In-Feed | Sidebar | Footer – ready for Google AdSense</p>
     </footer>
 </main>
 
@@ -229,7 +231,7 @@
         { league: "🇵🇹 Portugal Primeira Liga", time: "15:30", home: "Tondela", away: "Nacional", odds1: "2.90", oddsX: "3.40", odds2: "2.35", tip1x2: "X2", btts: "GG", csTip: "1-2", confidence: "Medium", isSure: false },
         { league: "🇵🇹 Portugal Primeira Liga", time: "20:30", home: "Guimaraes", away: "Rio Ave", odds1: "1.85", oddsX: "3.30", odds2: "4.50", tip1x2: "1X", btts: "GG", csTip: "2-1", confidence: "High", isSure: false },
         
-        // ========== ENGLAND CHAMPIONSHIP (compact) ==========
+        // ========== ENGLAND CHAMPIONSHIP ==========
         { league: "🏴󠁧󠁢󠁥󠁮󠁧󠁿 England Championship", time: "12:30", home: "Charlton", away: "Hull City", odds1: "2.88", oddsX: "3.20", odds2: "2.50", tip1x2: "X2", btts: "GG", csTip: "1-1", confidence: "Medium", isSure: false },
         { league: "🏴󠁧󠁢󠁥󠁮󠁧󠁿 England Championship", time: "12:30", home: "West Brom", away: "Ipswich", odds1: "3.70", oddsX: "3.90", odds2: "1.90", tip1x2: "X2", btts: "GG", csTip: "1-2", confidence: "High", isSure: false },
         { league: "🏴󠁧󠁢󠁥󠁮󠁧󠁿 England Championship", time: "12:30", home: "Middlesbrough", away: "Watford", odds1: "1.42", oddsX: "4.75", odds2: "6.50", tip1x2: "1X", btts: "GG", csTip: "1-1", confidence: "High", isSure: false },
@@ -280,7 +282,7 @@
 
 <!-- Floating Help Button for Daily Edits -->
 <div class="fixed bottom-4 right-4 z-40">
-    <button onclick="alert('📝 TO UPDATE MATCHES:\n1. Edit the matchesData array inside the HTML file.\n2. Add or modify matches using the same format.\n3. Commit changes on GitHub → Vercel auto deploys.\n\n✅ AD SPACES: Top Banner, In-Feed, Sidebar, Footer are ready for Google AdSense.')" class="bg-green-800 text-white p-2 rounded-full shadow-lg hover:bg-green-700 w-10 h-10 flex items-center justify-center">
+    <button onclick="alert('📝 TO UPDATE MATCHES:\n1. Edit the matchesData array inside the HTML file.\n2. Add or modify matches using the same format.\n3. Commit changes on GitHub → Vercel auto deploys.\n\n✅ AD SPACES: Top Banner, In-Feed, Sidebar, Footer are ready for Google AdSense (no pop-unders).')" class="bg-green-800 text-white p-2 rounded-full shadow-lg hover:bg-green-700 w-10 h-10 flex items-center justify-center">
         <i class="fas fa-edit"></i>
     </button>
 </div>
