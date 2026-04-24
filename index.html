@@ -3,425 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>BetGenuine Clone | 100% Sure Football Predictions</title>
-    <!-- Google Fonts & Tailwind CDN + Font Awesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <title>BetGenuine Pro | Sure Football Predictions</title>
+    <!-- Tailwind CSS + Font Awesome -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Custom override for card hover & interactive states -->
     <style>
-        * {
-            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
+        /* Custom styles for table-like cards */
+        .match-row {
+            transition: all 0.2s ease;
         }
-        body {
-            background: #f8fafc;
+        .match-row:hover {
+            background-color: #fef9e3;
+            transform: scale(1.01);
         }
-        .match-card {
-            transition: all 0.25s ease-in-out;
-            box-shadow: 0 4px 9px -3px rgba(0, 0, 0, 0.05);
-        }
-        .match-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 25px -8px rgba(0, 0, 0, 0.12);
-            border-color: #e2e8f0;
-        }
-        .admin-panel {
-            transition: all 0.2s;
-        }
-        .tip-badge {
-            transition: all 0.15s;
-        }
-        .view-tips-btn {
-            transition: all 0.2s;
-        }
-        .view-tips-btn:active {
-            transform: scale(0.97);
-        }
-        /* Adsense ready containers */
         .ad-container {
-            min-height: 100px;
-            background: #f1f5f9;
-            border-radius: 0.75rem;
+            background: #f8fafc;
+            border-radius: 1rem;
+            border: 1px dashed #cbd5e1;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 1px dashed #cbd5e1;
-            transition: all 0.2s;
+            min-height: 90px;
+            text-align: center;
         }
-        .ad-label {
+        .confidence-badge {
             font-size: 0.7rem;
-            font-weight: 500;
-            background: #e2e8f0;
+            font-weight: 700;
             padding: 0.2rem 0.6rem;
-            border-radius: 30px;
-            color: #334155;
+            border-radius: 20px;
+            display: inline-block;
         }
-        @media (max-width: 640px) {
-            .ad-container {
-                min-height: 80px;
+        .conf-high { background: #dcfce7; color: #15803d; }
+        .conf-medium { background: #fef9c3; color: #854d0e; }
+        .conf-low { background: #ffe4e6; color: #be123c; }
+        @media (max-width: 768px) {
+            .match-grid {
+                font-size: 0.8rem;
             }
-        }
-        button, select, .view-tips-btn {
-            cursor: pointer;
-        }
-        .sticky-sidebar {
-            position: sticky;
-            top: 20px;
-        }
-        .leaderboard-item {
-            transition: all 0.15s;
-        }
-        footer a {
-            text-decoration: none;
         }
     </style>
 </head>
-<body class="antialiased">
+<body class="bg-gray-100 font-sans">
 
-    <!-- ==================== TOP BANNER AD (READY FOR ADSENSE) ==================== -->
-    <div class="bg-gradient-to-r from-amber-400 to-yellow-500 text-black text-center text-sm font-semibold py-2.5 shadow-sm">
-        <div class="container mx-auto flex justify-center items-center gap-2 flex-wrap">
-            <span class="inline-flex items-center gap-1"><i class="fas fa-ad text-xs"></i> Advertisement</span>
-            <!-- AD READY container (Google AdSense ready ID) -->
-            <div id="top-banner-ad" class="ad-container !bg-transparent !border-dashed !border-white/40 !min-h-[40px] !p-0 !shadow-none ml-2" style="background:transparent; border:1px dashed rgba(255,255,240,0.5); padding:0 6px;">
-                <span class="ad-label text-black/80 text-[11px]">Ads by Google – 728x90</span>
+    <!-- =================== TOP BANNER AD SPACE =================== -->
+    <div class="bg-white border-b border-gray-200 shadow-sm">
+        <div class="container mx-auto px-4 py-2 text-center">
+            <div id="top-ad" class="ad-container bg-gray-50">
+                <span class="text-gray-500 text-sm"><i class="fas fa-ad"></i> 728x90 Banner Ad – Google AdSense Ready</span>
             </div>
         </div>
     </div>
 
-    <!-- ==================== HEADER + NAV ==================== -->
-    <header class="bg-white shadow-md sticky top-0 z-30 border-b border-gray-100">
-        <div class="container mx-auto px-4 py-4 flex flex-wrap justify-between items-center gap-4">
-            <div class="flex items-center gap-2">
-                <div class="bg-green-700 w-9 h-9 rounded-xl flex items-center justify-center shadow-md">
-                    <i class="fas fa-futbol text-white text-xl"></i>
-                </div>
-                <div>
-                    <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight">
-                        <span class="text-green-700">BET</span><span class="text-gray-900">GENUINE</span>
-                    </h1>
-                    <p class="text-[11px] text-gray-500 -mt-1 font-medium">100% Sure Football Predictions</p>
-                </div>
-            </div>
-            <div class="flex gap-3 items-center">
-                <!-- Admin Toggle Button (Interactive) -->
-                <button id="adminToggleBtn" class="bg-gray-900 hover:bg-green-800 text-white text-sm font-bold px-5 py-2 rounded-full transition-all shadow-sm flex items-center gap-2">
-                    <i class="fas fa-user-shield"></i> <span>ADMIN</span>
-                </button>
-            </div>
+    <!-- =================== HEADER =================== -->
+    <header class="bg-gradient-to-r from-green-800 to-green-700 text-white py-5 shadow-lg">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-3xl md:text-4xl font-black">⚡ BET<span class="text-yellow-300">GENUINE</span>.COM</h1>
+            <p class="text-green-100 text-sm mt-1">100% Sure Football Predictions & Daily Tips</p>
         </div>
     </header>
 
-    <!-- ==================== MAIN CONTENT WRAPPER ==================== -->
-    <main class="container mx-auto px-4 py-6 max-w-7xl">
-
-        <!-- HERO SECTION (Trust bar) -->
-        <div class="bg-gradient-to-r from-green-800 to-green-700 text-white rounded-2xl p-5 md:p-6 mb-8 shadow-lg text-center">
-            <div class="flex flex-wrap justify-between items-center gap-3">
-                <div class="flex-1 min-w-[120px]">
-                    <p class="text-3xl font-black">800+</p>
-                    <p class="text-xs uppercase tracking-wide opacity-90">Subscribers</p>
-                </div>
-                <div class="flex-1 min-w-[120px]">
-                    <p class="text-3xl font-black">15+</p>
-                    <p class="text-xs uppercase tracking-wide opacity-90">Daily Games</p>
-                </div>
-                <div class="flex-1 min-w-[120px]">
-                    <p class="text-3xl font-black">89%</p>
-                    <p class="text-xs uppercase tracking-wide opacity-90">Accuracy</p>
-                </div>
-                <div class="flex-1 min-w-[120px]">
-                    <p class="text-3xl font-black">2.1k+</p>
-                    <p class="text-xs uppercase tracking-wide opacity-90">Happy Clients</p>
-                </div>
+    <!-- =================== MAIN CONTENT =================== -->
+    <main class="container mx-auto px-4 py-8">
+        
+        <!-- Today's date & stats -->
+        <div class="flex flex-wrap justify-between items-center gap-3 mb-6">
+            <div class="bg-white rounded-full px-4 py-2 shadow text-sm font-semibold text-gray-700">
+                <i class="far fa-calendar-alt text-green-700"></i> <span id="currentDate"></span>
             </div>
-            <p class="text-green-100 text-sm mt-5 font-medium">⚡ Well analysed 1X2, Over/Under, BTTS & Correct Score — trusted by punters in Kenya, Nigeria, Ghana, UK & USA.</p>
+            <div class="flex gap-2 text-xs font-bold">
+                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full">📊 Accuracy 89%</span>
+                <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full">🔥 Premium Tips</span>
+            </div>
         </div>
 
-        <!-- Today's date section -->
-        <div class="flex justify-between items-center border-b border-gray-200 pb-2 mb-5">
-            <div class="flex items-center gap-2 text-gray-500 text-sm font-semibold">
-                <i class="far fa-calendar-alt"></i> <span id="currentDateSpan"></span>
+        <!-- Two column layout: matches (left) + sidebar (right) -->
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            <!-- MATCHES SECTION (3/4 width) -->
+            <div class="lg:col-span-3">
+                <div class="bg-white rounded-2xl shadow-md overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full text-sm">
+                            <thead class="bg-gray-800 text-white text-xs uppercase tracking-wider">
+                                <tr>
+                                    <th class="px-3 py-3 text-left">League</th>
+                                    <th class="px-2 py-3 text-center">Time</th>
+                                    <th class="px-3 py-3 text-left">Home</th>
+                                    <th class="px-1 py-3 text-center">Away</th>
+                                    <th class="px-2 py-3 text-center">1</th>
+                                    <th class="px-2 py-3 text-center">X</th>
+                                    <th class="px-2 py-3 text-center">2</th>
+                                    <th class="px-2 py-3 text-center">1x2 Tip</th>
+                                    <th class="px-2 py-3 text-center">BTTS</th>
+                                    <th class="px-2 py-3 text-center">CS Tip</th>
+                                    <th class="px-2 py-3 text-center">Conf.</th>
+                                </tr>
+                            </thead>
+                            <tbody id="matches-table-body">
+                                <!-- rows injected via JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- In-Feed Ad (after matches list) -->
+                <div id="infeed-ad" class="ad-container mt-6">
+                    <span class="text-gray-500 text-sm"><i class="fas fa-ad"></i> In-Feed Ad – Perfect for native ads</span>
+                </div>
             </div>
-            <div class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full font-bold shadow-sm">LIVE TIPS</div>
-        </div>
 
-        <!-- TWO COLUMN LAYOUT: MATCHES (left) + SIDEBAR (right with ads & leaderboard) -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            
-            <!-- LEFT COLUMN: MATCH CARDS SECTION -->
-            <div class="lg:col-span-2 space-y-5" id="matchesContainer">
-                <!-- Dynamically injected match cards from JS -->
-                <div class="text-center py-20 text-gray-400"><i class="fas fa-spinner fa-spin"></i> Loading matches...</div>
-            </div>
-
-            <!-- RIGHT SIDEBAR: LEADERBOARD + PREMIUM + STICKY AD ZONE -->
+            <!-- RIGHT SIDEBAR: AD + LEADERBOARD + PREMIUM -->
             <div class="space-y-6">
-                <!-- CARD: LEADERBOARD (interactive with your name at top) -->
-                <div class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden sticky-sidebar">
-                    <div class="bg-gray-50 px-5 py-3 border-b border-gray-200 flex gap-2 items-center">
-                        <i class="fas fa-trophy text-yellow-600 text-lg"></i>
-                        <h3 class="font-extrabold text-gray-800">🏆 TOP PREDICTORS</h3>
-                    </div>
-                    <div class="p-4 space-y-2" id="leaderboardList">
-                        <!-- injected JS (leaderboard) -->
-                    </div>
-                    <div class="bg-gray-50 px-4 py-2 text-center text-[11px] text-gray-400 border-t">
-                        <i class="fas fa-chart-line"></i> updated real-time
+                <!-- Sidebar Ad -->
+                <div id="sidebar-ad" class="ad-container flex-col gap-2 p-4 bg-white shadow">
+                    <i class="fas fa-ad text-gray-400"></i>
+                    <span class="text-gray-500 text-xs">300x250 Sidebar Ad – Google AdSense</span>
+                </div>
+
+                <!-- Sample Leaderboard (optional) -->
+                <div class="bg-white rounded-xl p-4 shadow">
+                    <h3 class="font-bold text-gray-800 border-b pb-2 mb-2 flex items-center gap-2"><i class="fas fa-chart-line text-green-600"></i> Top Predictors</h3>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between"><span>1. Brian Festus</span><span class="text-green-700 font-bold">289 pts</span></div>
+                        <div class="flex justify-between"><span>2. Alex Wanjala</span><span class="text-green-700 font-bold">252 pts</span></div>
+                        <div class="flex justify-between"><span>3. Sarah Otieno</span><span class="text-green-700 font-bold">198 pts</span></div>
                     </div>
                 </div>
 
-                <!-- PREMIUM CTA BOX -->
-                <div class="bg-gradient-to-r from-amber-50 to-yellow-50 p-5 rounded-2xl border border-amber-200 text-center">
-                    <i class="fas fa-gem text-amber-600 text-2xl"></i>
-                    <h4 class="font-black text-gray-800 mt-1">⭐ PREMIUM TIPS</h4>
-                    <p class="text-sm text-gray-700 mt-1">Maximize profits with our "2 to 5" sure daily picks up to 95% win rate.</p>
-                    <button class="bg-green-700 hover:bg-green-800 text-white text-sm font-bold px-6 py-2 rounded-full mt-3 w-full transition">📲 Chat on WhatsApp</button>
-                </div>
-
-                <!-- SIDEBAR AD UNIT (READY FOR ADSENSE) - 300x250 or responsive -->
-                <div id="sidebar-ad-container" class="ad-container flex-col gap-2 p-4 bg-gray-50 border-gray-300">
-                    <i class="fas fa-ad text-gray-400 text-xs"></i>
-                    <span class="ad-label">Advertisement - 300x250</span>
-                    <div class="text-gray-500 text-xs mt-1">[ Replace with AdSense code ]</div>
+                <!-- Premium CTA -->
+                <div class="bg-gradient-to-r from-yellow-50 to-amber-50 rounded-xl p-4 text-center border border-amber-200">
+                    <i class="fas fa-gem text-amber-600 text-xl"></i>
+                    <p class="font-bold mt-1">⭐ Premium Tips – 95% win rate</p>
+                    <button class="bg-green-700 text-white text-sm px-4 py-1 rounded-full mt-2">Chat on WhatsApp →</button>
                 </div>
             </div>
         </div>
 
-        <!-- BOTTOM PREMIUM RESULTS SECTION + FOOTER AD -->
-        <div class="mt-12 bg-white rounded-2xl border border-gray-200 shadow-sm p-5">
-            <h3 class="font-black text-gray-800 flex items-center gap-2"><i class="fas fa-chart-simple text-green-700"></i> Recent Premium Results</h3>
-            <div class="flex flex-wrap gap-3 mt-4 justify-between items-center">
-                <div class="flex flex-wrap gap-4 text-sm font-bold">
-                    <span class="bg-gray-100 px-4 py-2 rounded-full">✅ 2.14 odds</span>
-                    <span class="bg-gray-100 px-4 py-2 rounded-full">✅ 3.50 odds</span>
-                    <span class="bg-gray-100 px-4 py-2 rounded-full">✅ 2.31 odds</span>
-                    <span class="bg-gray-100 px-4 py-2 rounded-full">🔥 6.40 odds</span>
-                </div>
-                <div class="text-green-700 text-sm font-semibold"><i class="fas fa-whatsapp"></i> WhatsApp channel</div>
-            </div>
-            <!-- FOOTER AD PLACEHOLDER (READY) -->
-            <div id="footer-ad-unit" class="ad-container mt-6 w-full">
-                <span class="ad-label">Footer Banner – 728x90 (AdSense ready)</span>
-            </div>
+        <!-- BOTTOM FOOTER AD -->
+        <div id="footer-ad" class="ad-container mt-10">
+            <span class="text-gray-500 text-sm"><i class="fas fa-ad"></i> Footer Banner – 728x90 (AdSense ready)</span>
         </div>
 
-        <!-- FOOTER WITH DISCLAIMER -->
-        <footer class="mt-8 text-center text-gray-500 text-xs py-6 border-t border-gray-200">
-            <p>© 2024 BetGenuine Clone — For entertainment only. 18+ only. Predictions are opinions, not financial advice.</p>
-            <p class="mt-1">📢 All ad spaces are ready for Google AdSense integration. Contact: ads@betgenuine.com</p>
+        <footer class="text-center text-gray-500 text-xs mt-8 border-t pt-6">
+            <p>© 2024 BetGenuine Clone — For entertainment only. 18+ only. Predictions are opinions, not guarantees.</p>
+            <p class="mt-1">⚡ All ad slots are pre‑positioned – replace with Google AdSense code when approved.</p>
         </footer>
     </main>
 
-    <!-- ADMIN MODAL PANEL (hidden by default, interactive) -->
-    <div id="adminModal" class="fixed inset-0 bg-black/70 z-50 flex items-center justify-center px-4 hidden transition-all">
-        <div class="bg-white rounded-2xl max-w-2xl w-full p-6 shadow-2xl border-t-8 border-green-600">
-            <div class="flex justify-between items-center">
-                <h2 class="text-2xl font-black text-gray-800"><i class="fas fa-laptop-code"></i> Admin Panel - Edit Matches</h2>
-                <button id="closeAdminBtn" class="text-gray-500 hover:text-red-600 text-2xl">&times;</button>
-            </div>
-            <p class="text-gray-500 text-sm mt-2">Update matches for tomorrow / today. Changes will persist until edited again (in-memory demo version). To make permanent, copy the code from GitHub instructions.</p>
-            <div class="mt-5 border rounded-xl p-4 bg-gray-50">
-                <p class="font-mono text-xs text-gray-700 break-all"><span class="font-bold">✏️ Daily update workflow:</span> Edit the <strong>defaultMatchesData</strong> array in the JavaScript (line ~280) and commit via GitHub to keep changes online.</p>
-            </div>
-            <div class="mt-5 flex justify-end">
-                <button id="syncMatchesAdminBtn" class="bg-green-700 text-white px-5 py-2 rounded-xl font-bold hover:bg-green-800 transition">➕ Add Demo Match & Save</button>
-            </div>
-            <p class="text-[11px] text-gray-400 mt-4">Tip: Use the interactive buttons on match cards to simulate predictions & leaderboard.</p>
-        </div>
-    </div>
-
     <script>
-        // ----------------------------------------------
-        //  COMPLETE SPORTS PREDICTION DATA (EDIT DAILY)
-        //  matchesData - Change teams, tips, odds here
-        // ----------------------------------------------
-        let matchesData = [
-            { id: 1, league: "🇪🇸 La Liga", time: "22:00", home: "Real Betis", away: "Real Madrid", predictionTip: "2", confidence: "High", odds: "1.85", bttsTip: "BTTS-Yes", overUnder: "O 2.5" },
-            { id: 2, league: "🇮🇩 Liga 1", time: "13:00", home: "Persib Bandung", away: "Arema FC", predictionTip: "1", confidence: "Norm", odds: "1.90", bttsTip: "BTTS-No", overUnder: "U 2.5" },
-            { id: 3, league: "🇧🇪 Pro League", time: "19:45", home: "Cercle Brugge", away: "Dender", predictionTip: "1X", confidence: "High", odds: "1.65", bttsTip: "GG", overUnder: "O 1.5" },
-            { id: 4, league: "🇮🇹 Serie A", time: "19:45", home: "Napoli", away: "Cremonese", predictionTip: "1", confidence: "High", odds: "1.50", bttsTip: "BTTS-No", overUnder: "O 2.5" },
-            { id: 5, league: "🏴󠁧󠁢󠁳󠁣󠁴󠁿 Championship", time: "19:45", home: "St Johnstone", away: "Raith Rovers", predictionTip: "1X", confidence: "Norm", odds: "1.75", bttsTip: "NG", overUnder: "U 2.5" },
-            { id: 6, league: "🇹🇷 Süper Lig", time: "20:00", home: "Galatasaray", away: "Fenerbahçe", predictionTip: "X", confidence: "High", odds: "3.20", bttsTip: "GG", overUnder: "O 2.5" },
-            { id: 7, league: "🏴󠁧󠁢󠁥󠁮󠁧󠁿 Championship", time: "21:00", home: "Leeds United", away: "Southampton", predictionTip: "1", confidence: "High", odds: "1.95", bttsTip: "BTTS-Yes", overUnder: "O 2.5" }
+        // ============================================================
+        // ✏️ EDIT YOUR DAILY MATCHES HERE – Update this array every day
+        // ============================================================
+        const matchesData = [
+            { league: "Belgium Jupiler Pro League", time: "19:45", home: "Cercle Brugge", away: "Dender", odds1: "1.45", oddsX: "4.20", odds2: "6.25", tip1x2: "1X", btts: "GG", csTip: "3-1", confidence: "High" },
+            { league: "Italy Serie A", time: "19:45", home: "Napoli", away: "Cremonese", odds1: "1.33", oddsX: "5.00", odds2: "10.00", tip1x2: "1", btts: "NG", csTip: "3-0", confidence: "High" },
+            { league: "Spain La Liga", time: "20:00", home: "Real Betis", away: "Real Madrid", odds1: "3.60", oddsX: "4.20", odds2: "1.85", tip1x2: "X2", btts: "GG", csTip: "1-2", confidence: "High" },
+            { league: "Scotland Championship", time: "19:45", home: "ST Johnstone", away: "Raith Rovers", odds1: "1.48", oddsX: "3.90", odds2: "6.00", tip1x2: "1X", btts: "NG", csTip: "3-0", confidence: "Medium" },
+            { league: "Indonesia Liga 1 (LIVE)", time: "LIVE", home: "Persib Bandung", away: "Arema FC", odds1: "1.20", oddsX: "6.00", odds2: "11.00", tip1x2: "1", btts: "NG", csTip: "3-0", confidence: "High" },
+            { league: "France Ligue 1", time: "19:45", home: "Stade Brestois 29", away: "Lens", odds1: "5.00", oddsX: "4.00", odds2: "1.67", tip1x2: "2", btts: "GG", csTip: "1-2", confidence: "High" },
+            { league: "England Premier League", time: "20:00", home: "Sunderland", away: "Nottm Forest", odds1: "2.80", oddsX: "3.20", odds2: "2.62", tip1x2: "1X", btts: "GG", csTip: "1-1", confidence: "Medium" },
+            { league: "Germany Bundesliga", time: "19:30", home: "RB Leipzig", away: "Union Berlin", odds1: "1.33", oddsX: "5.50", odds2: "8.50", tip1x2: "1", btts: "GG", csTip: "3-1", confidence: "High" },
+            { league: "Portugal Primeira Liga", time: "20:15", home: "Alverca", away: "Arouca", odds1: "2.30", oddsX: "3.20", odds2: "3.20", tip1x2: "1X", btts: "GG", csTip: "1-1", confidence: "Medium" },
+            { league: "France Ligue 2", time: "19:00", home: "Annecy", away: "PAU", odds1: "1.91", oddsX: "3.40", odds2: "3.60", tip1x2: "1X", btts: "GG", csTip: "2-1", confidence: "Medium" },
+            { league: "Turkey Süper Lig", time: "18:00", home: "Başakşehir", away: "Kasımpaşa", odds1: "1.67", oddsX: "4.00", odds2: "4.75", tip1x2: "1X", btts: "GG", csTip: "3-1", confidence: "High" },
+            { league: "England Championship", time: "20:00", home: "Leicester", away: "Millwall", odds1: "3.90", oddsX: "3.80", odds2: "1.85", tip1x2: "X2", btts: "GG", csTip: "1-2", confidence: "High" },
+            { league: "Poland Ekstraklasa", time: "19:30", home: "Jagiellonia", away: "Gornik Zabrze", odds1: "2.25", oddsX: "3.30", odds2: "2.88", tip1x2: "1X", btts: "GG", csTip: "2-1", confidence: "Medium" },
+            { league: "Ireland Premier Division", time: "19:45", home: "Shelbourne", away: "Drogheda Utd", odds1: "1.67", oddsX: "3.40", odds2: "5.00", tip1x2: "1X", btts: "GG", csTip: "2-1", confidence: "Medium" }
         ];
 
-        // ========== LEADERBOARD DATA (clickable and dynamic) ==========
-        let leaderboard = [
-            { name: "Brian Festus", points: 285, trend: "up" },
-            { name: "Alex Wanjala", points: 242, trend: "up" },
-            { name: "Sarah Otieno", points: 198, trend: "down" },
-            { name: "James Mwangi", points: 177, trend: "up" },
-            { name: "Linda Akinyi", points: 165, trend: "down" }
-        ];
-
-        // Helper: render leaderboard
-        function renderLeaderboard() {
-            const container = document.getElementById('leaderboardList');
-            if (!container) return;
-            container.innerHTML = leaderboard.map((user, idx) => `
-                <div class="flex justify-between items-center leaderboard-item p-2 rounded-lg hover:bg-gray-50 transition">
-                    <div class="flex items-center gap-2">
-                        <span class="font-bold text-yellow-600 w-6">${idx+1}</span>
-                        <span class="font-medium text-gray-800">${user.name}</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <span class="font-black text-green-600">${user.points} pts</span>
-                        <span class="text-xs">${user.trend === 'up' ? '📈' : '📉'}</span>
-                    </div>
-                </div>
-            `).join('');
+        // Helper: confidence badge class
+        function getConfClass(conf) {
+            if (conf === "High") return "conf-high";
+            if (conf === "Medium") return "conf-medium";
+            return "conf-low";
         }
 
-        // SIMULATE prediction & update points for user (just frontend demo)
-        function handlePrediction(matchId, selectedWinner, matchHome, matchAway) {
-            // find match details
-            const match = matchesData.find(m => m.id === matchId);
-            if (!match) return;
-            const actualTip = match.predictionTip;   // '1', 'X', '2', '1X' etc
-            let isWin = false;
-            // simplified win condition for demo: "1" maps to home, "2" away, X draw, 1X covers home/draw
-            if (actualTip === "1" && selectedWinner === matchHome) isWin = true;
-            else if (actualTip === "2" && selectedWinner === matchAway) isWin = true;
-            else if (actualTip === "X" && selectedWinner === "Draw") isWin = true;
-            else if (actualTip === "1X" && (selectedWinner === matchHome || selectedWinner === "Draw")) isWin = true;
-            else if (actualTip === "X2" && (selectedWinner === matchAway || selectedWinner === "Draw")) isWin = true;
-            else if (actualTip.includes(selectedWinner)) isWin = true;
-
-            if (isWin) {
-                alert(`✅ CORRECT! You earned +10 points! (${match.home} vs ${match.away})`);
-                // Update leaderboard (first user gets points)
-                if (leaderboard.length && leaderboard[0].name === "Brian Festus") {
-                    leaderboard[0].points += 10;
-                    renderLeaderboard();
-                } else {
-                    alert("Great prediction accuracy! Check leaderboard.");
-                }
-            } else {
-                alert(`❌ Oops! The tip was ${actualTip}. Better luck next match.`);
-            }
-        }
-
-        // Render match cards dynamically (fully clickable)
+        // Render table rows
         function renderMatches() {
-            const container = document.getElementById('matchesContainer');
-            if (!container) return;
-            if (matchesData.length === 0) {
-                container.innerHTML = `<div class="bg-gray-100 p-8 text-center rounded-xl text-gray-500">No upcoming matches. Use Admin panel to add.</div>`;
-                return;
-            }
-            let html = '';
-            matchesData.forEach((match, idx) => {
-                html += `
-                    <div class="match-card bg-white rounded-2xl border border-gray-200 overflow-hidden transition-all">
-                        <div class="bg-gray-50 px-5 py-2 flex flex-wrap justify-between text-xs font-semibold text-gray-600 border-b border-gray-100">
-                            <span><i class="far fa-clock"></i> ${match.time} • ${match.league}</span>
-                            <span class="bg-green-100 text-green-800 px-2 py-0.5 rounded-full">ID:${match.id}</span>
-                        </div>
-                        <div class="p-5">
-                            <div class="flex justify-between items-center text-center gap-3">
-                                <div class="flex-1">
-                                    <div class="text-3xl mb-1">⚪</div>
-                                    <div class="font-black text-gray-800 text-lg">${match.home}</div>
-                                </div>
-                                <div class="text-gray-400 font-black text-xl">VS</div>
-                                <div class="flex-1">
-                                    <div class="text-3xl mb-1">⚪</div>
-                                    <div class="font-black text-gray-800 text-lg">${match.away}</div>
-                                </div>
-                            </div>
-                            <!-- TIPS GRID (professional compact table) -->
-                            <div class="grid grid-cols-2 md:grid-cols-4 gap-2 mt-5 text-center">
-                                <div class="bg-green-50 p-2 rounded-xl"><span class="font-black text-green-700 text-sm">1X2</span><div class="font-extrabold">${match.predictionTip}</div></div>
-                                <div class="bg-blue-50 p-2 rounded-xl"><span class="font-black text-blue-700 text-sm">O/U</span><div class="font-extrabold">${match.overUnder || 'O2.5'}</div></div>
-                                <div class="bg-yellow-50 p-2 rounded-xl"><span class="font-black text-yellow-700 text-sm">BTTS</span><div class="font-extrabold">${match.bttsTip || 'GG'}</div></div>
-                                <div class="bg-purple-50 p-2 rounded-xl"><span class="font-black text-purple-700 text-sm">ODDS</span><div class="font-extrabold text-purple-800">${match.odds}</div></div>
-                            </div>
-                            <!-- Interactive Prediction Dropdown + Clickable "VIEW TIPS" BTN -->
-                            <div class="flex flex-wrap justify-between items-center mt-5 gap-3">
-                                <select id="predSelect-${match.id}" class="border border-gray-300 bg-white rounded-full px-4 py-2 text-sm font-medium shadow-sm focus:ring-2 focus:ring-green-300">
-                                    <option value="">🔮 Pick Winner</option>
-                                    <option value="${match.home}">🏠 ${match.home}</option>
-                                    <option value="${match.away}">✈️ ${match.away}</option>
-                                    <option value="Draw">🤝 Draw</option>
-                                </select>
-                                <button class="view-tips-btn bg-green-700 hover:bg-green-800 text-white px-6 py-2 rounded-full font-bold text-sm shadow-md flex items-center gap-2" data-match-id="${match.id}" data-home="${match.home}" data-away="${match.away}">
-                                    <i class="fas fa-eye"></i> VIEW TIPS
-                                </button>
-                            </div>
-                            <!-- In-Feed Ad Space (ready for AdSense) -->
-                            <div class="ad-container mt-4 !bg-gray-50 !border-gray-200 !min-h-[70px]">
-                                <span class="ad-label text-[10px]">In-Feed Ad · 300x100</span>
-                            </div>
-                        </div>
-                    </div>
+            const tbody = document.getElementById("matches-table-body");
+            if (!tbody) return;
+            tbody.innerHTML = "";
+            matchesData.forEach(m => {
+                const row = document.createElement("tr");
+                row.className = "border-b border-gray-100 hover:bg-yellow-50 transition match-row";
+                row.innerHTML = `
+                    <td class="px-3 py-3 font-semibold text-gray-800">${m.league}</td>
+                    <td class="px-2 py-3 text-center text-gray-600 text-xs">${m.time}</td>
+                    <td class="px-3 py-3 font-bold text-gray-900">${m.home}</td>
+                    <td class="px-1 py-3 text-center font-bold text-gray-900">${m.away}</td>
+                    <td class="px-2 py-3 text-center font-mono text-green-700">${m.odds1}</td>
+                    <td class="px-2 py-3 text-center font-mono text-green-700">${m.oddsX}</td>
+                    <td class="px-2 py-3 text-center font-mono text-green-700">${m.odds2}</td>
+                    <td class="px-2 py-3 text-center font-extrabold text-blue-800">${m.tip1x2}</td>
+                    <td class="px-2 py-3 text-center font-bold text-indigo-700">${m.btts}</td>
+                    <td class="px-2 py-3 text-center font-mono text-amber-700">${m.csTip}</td>
+                    <td class="px-2 py-3 text-center"><span class="confidence-badge ${getConfClass(m.confidence)}">${m.confidence}</span></td>
                 `;
-            });
-            container.innerHTML = html;
-
-            // Attach event listeners to each "VIEW TIPS" button
-            document.querySelectorAll('.view-tips-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    const matchId = parseInt(btn.getAttribute('data-match-id'));
-                    const homeTeam = btn.getAttribute('data-home');
-                    const awayTeam = btn.getAttribute('data-away');
-                    const selectEl = document.getElementById(`predSelect-${matchId}`);
-                    const selectedValue = selectEl?.value;
-                    if (!selectedValue) {
-                        alert("Please pick a winner from the dropdown before viewing tips!");
-                        return;
-                    }
-                    handlePrediction(matchId, selectedValue, homeTeam, awayTeam);
-                });
+                tbody.appendChild(row);
             });
         }
 
-        // Admin modal logic
-        const adminBtn = document.getElementById('adminToggleBtn');
-        const adminModal = document.getElementById('adminModal');
-        const closeAdmin = document.getElementById('closeAdminBtn');
-        const syncBtn = document.getElementById('syncMatchesAdminBtn');
-
-        adminBtn?.addEventListener('click', () => {
-            adminModal.classList.remove('hidden');
-        });
-        closeAdmin?.addEventListener('click', () => {
-            adminModal.classList.add('hidden');
-        });
-        syncBtn?.addEventListener('click', () => {
-            // Add demo match: Arsenal vs Chelsea to matchesData for demo persist until page reload.
-            const newId = matchesData.length + 1;
-            const newMatch = {
-                id: newId,
-                league: "🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League",
-                time: "18:30",
-                home: "Arsenal",
-                away: "Chelsea",
-                predictionTip: "1X",
-                confidence: "High",
-                odds: "1.72",
-                bttsTip: "GG",
-                overUnder: "O 2.5"
-            };
-            matchesData.push(newMatch);
-            renderMatches();
-            adminModal.classList.add('hidden');
-            alert(`✅ Added Arsenal vs Chelsea! Now ${matchesData.length} matches available.`);
-        });
-        
         // Set today's date
         const today = new Date();
-        const formattedDate = today.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
-        const dateSpan = document.getElementById('currentDateSpan');
-        if(dateSpan) dateSpan.innerText = `📅 Soccer Games by date: ${formattedDate}`;
+        const formatted = today.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+        document.getElementById("currentDate").innerText = `📅 ${formatted}`;
 
-        // Render everything
         renderMatches();
-        renderLeaderboard();
-        
-        // optional: make ad containers fully ready for Adsense (just dummy data)
-        console.log("Ad containers ready: #top-banner-ad, #sidebar-ad-container, #footer-ad-unit")
     </script>
-    <!-- Additional small fix to ensure that any click outside admin panel can close? but modal handles close btn -->
+    <!-- Easy daily update instructions (visible only when clicking a floating help button) -->
+    <div class="fixed bottom-4 right-4 z-40">
+        <button onclick="alert('📝 TO UPDATE MATCHES:\n1. Edit the matchesData array in the HTML file (look for ✏️ EDIT YOUR DAILY MATCHES).\n2. Replace or add matches.\n3. Commit changes on GitHub → Vercel auto deploys.')" class="bg-green-800 text-white p-2 rounded-full shadow-lg hover:bg-green-700 w-10 h-10 flex items-center justify-center">
+            <i class="fas fa-edit"></i>
+        </button>
+    </div>
 </body>
 </html>
