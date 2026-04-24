@@ -143,17 +143,58 @@
 
 <script>
     const matchesData = [
-        { league: "Belgium Jupiler Pro League", time: "19:45", home: "Cercle Brugge", away: "Dender", odds1: "1.45", oddsX: "4.20", odds2: "6.25", tip1x2: "1X", btts: "GG", csTip: "3-1", confidence: "High" },
-        { league: "Italy Serie A", time: "19:45", home: "Napoli", away: "Cremonese", odds1: "1.33", oddsX: "5.00", odds2: "10.00", tip1x2: "1", btts: "NG", csTip: "3-0", confidence: "High" },
-        { league: "Spain La Liga", time: "20:00", home: "Real Betis", away: "Real Madrid", odds1: "3.60", oddsX: "4.20", odds2: "1.85", tip1x2: "X2", btts: "GG", csTip: "1-2", confidence: "High" },
-        { league: "Scotland Championship", time: "19:45", home: "ST Johnstone", away: "Raith Rovers", odds1: "1.48", oddsX: "3.90", odds2: "6.00", tip1x2: "1X", btts: "NG", csTip: "3-0", confidence: "Medium" },
-        { league: "Indonesia Liga 1 (LIVE)", time: "LIVE", home: "Persib Bandung", away: "Arema FC", odds1: "1.20", oddsX: "6.00", odds2: "11.00", tip1x2: "1", btts: "NG", csTip: "3-0", confidence: "High" },
-        { league: "France Ligue 1", time: "19:45", home: "Stade Brestois 29", away: "Lens", odds1: "5.00", oddsX: "4.00", odds2: "1.67", tip1x2: "2", btts: "GG", csTip: "1-2", confidence: "High" },
-        { league: "England Premier League", time: "20:00", home: "Sunderland", away: "Nottm Forest", odds1: "2.80", oddsX: "3.20", odds2: "2.62", tip1x2: "1X", btts: "GG", csTip: "1-1", confidence: "Medium" },
-        { league: "Germany Bundesliga", time: "19:30", home: "RB Leipzig", away: "Union Berlin", odds1: "1.33", oddsX: "5.50", odds2: "8.50", tip1x2: "1", btts: "GG", csTip: "3-1", confidence: "High" },
-        { league: "Portugal Primeira Liga", time: "20:15", home: "Alverca", away: "Arouca", odds1: "2.30", oddsX: "3.20", odds2: "3.20", tip1x2: "1X", btts: "GG", csTip: "1-1", confidence: "Medium" },
-        { league: "Turkey Süper Lig", time: "18:00", home: "Başakşehir", away: "Kasımpaşa", odds1: "1.67", oddsX: "4.00", odds2: "4.75", tip1x2: "1X", btts: "GG", csTip: "3-1", confidence: "High" },
-        { league: "England Championship", time: "20:00", home: "Leicester", away: "Millwall", odds1: "3.90", oddsX: "3.80", odds2: "1.85", tip1x2: "X2", btts: "GG", csTip: "1-2", confidence: "High" }
+       const matchesData = [
+    // ========== FRANCE LIGUE 1 ==========
+    { league: "🇫🇷 France Ligue 1", time: "14:00", home: "Lyon", away: "Auxerre", odds1: "1.67", oddsX: "3.80", odds2: "5.25", tip1x2: "1X", btts: "GG", csTip: "2-1", confidence: "High" },
+    { league: "🇫🇷 France Ligue 1", time: "18:00", home: "Angers", away: "PSG", odds1: "10.00", oddsX: "6.00", odds2: "1.27", tip1x2: "2", btts: "NG", csTip: "0-3", confidence: "High" },
+    { league: "🇫🇷 France Ligue 1", time: "20:05", home: "Toulouse", away: "Monaco", odds1: "3.50", oddsX: "3.60", odds2: "2.05", tip1x2: "X2", btts: "GG", csTip: "1-2", confidence: "High" },
+    
+    // ========== ENGLAND PREMIER LEAGUE ==========
+    { league: "🏴󠁧󠁢󠁥󠁮󠁧󠁿 England Premier League", time: "12:30", home: "Fulham", away: "Aston Villa", odds1: "2.75", oddsX: "3.60", odds2: "2.45", tip1x2: "X2", btts: "GG", csTip: "1-3", confidence: "High" },
+    { league: "🏴󠁧󠁢󠁥󠁮󠁧󠁿 England Premier League", time: "15:00", home: "Liverpool", away: "Crystal Palace", odds1: "1.44", oddsX: "5.00", odds2: "6.25", tip1x2: "1", btts: "GG", csTip: "2-1", confidence: "High" },
+    { league: "🏴󠁧󠁢󠁥󠁮󠁧󠁿 England Premier League", time: "15:00", home: "West Ham", away: "Everton", odds1: "2.40", oddsX: "3.40", odds2: "2.90", tip1x2: "1X", btts: "GG", csTip: "1-1", confidence: "Medium" },
+    { league: "🏴󠁧󠁢󠁥󠁮󠁧󠁿 England Premier League", time: "15:00", home: "Wolves", away: "Tottenham", odds1: "4.20", oddsX: "4.33", odds2: "1.73", tip1x2: "X2", btts: "NG", csTip: "0-2", confidence: "High" },
+    
+    // ========== GERMANY BUNDESLIGA ==========
+    { league: "🇩🇪 Germany Bundesliga", time: "14:30", home: "FC Augsburg", away: "Eintracht Frankfurt", odds1: "2.50", oddsX: "3.80", odds2: "2.50", tip1x2: "X2", btts: "GG", csTip: "1-2", confidence: "Medium" },
+    { league: "🇩🇪 Germany Bundesliga", time: "14:30", home: "1. FC Köln", away: "Bayer Leverkusen", odds1: "3.80", oddsX: "4.00", odds2: "1.85", tip1x2: "X2", btts: "GG", csTip: "1-3", confidence: "High" },
+    { league: "🇩🇪 Germany Bundesliga", time: "14:30", home: "1. FC Heidenheim", away: "FC St. Pauli", odds1: "2.30", oddsX: "3.50", odds2: "3.00", tip1x2: "1X", btts: "GG", csTip: "1-1", confidence: "Medium" },
+    { league: "🇩🇪 Germany Bundesliga", time: "14:30", home: "FSV Mainz 05", away: "Bayern München", odds1: "4.33", oddsX: "4.50", odds2: "1.67", tip1x2: "2", btts: "GG", csTip: "1-3", confidence: "High" },
+    { league: "🇩🇪 Germany Bundesliga", time: "14:30", home: "VfL Wolfsburg", away: "Borussia M'gladbach", odds1: "2.20", oddsX: "3.75", odds2: "3.00", tip1x2: "X2", btts: "GG", csTip: "1-1", confidence: "Medium" },
+    { league: "🇩🇪 Germany Bundesliga", time: "17:30", home: "Hamburger SV", away: "1899 Hoffenheim", odds1: "4.00", oddsX: "4.00", odds2: "1.75", tip1x2: "X2", btts: "GG", csTip: "1-2", confidence: "High" },
+    
+    // ========== ITALY SERIE A ==========
+    { league: "🇮🇹 Italy Serie A", time: "14:00", home: "Parma", away: "Pisa", odds1: "2.10", oddsX: "3.20", odds2: "3.75", tip1x2: "1X", btts: "NG", csTip: "1-0", confidence: "High" },
+    { league: "🇮🇹 Italy Serie A", time: "17:00", home: "Bologna", away: "AS Roma", odds1: "3.10", oddsX: "3.20", odds2: "2.40", tip1x2: "X2", btts: "GG", csTip: "1-2", confidence: "High" },
+    { league: "🇮🇹 Italy Serie A", time: "19:45", home: "Hellas Verona", away: "Lecce", odds1: "2.75", oddsX: "3.00", odds2: "2.80", tip1x2: "X", btts: "GG", csTip: "1-1", confidence: "Medium" },
+    
+    // ========== NETHERLANDS EREDIVISIE ==========
+    { league: "🇳🇱 Netherlands Eredivisie", time: "15:30", home: "Feyenoord", away: "Groningen", odds1: "1.62", oddsX: "4.50", odds2: "4.50", tip1x2: "1", btts: "GG", csTip: "2-1", confidence: "High" },
+    { league: "🇳🇱 Netherlands Eredivisie", time: "17:45", home: "Heerenveen", away: "Fortuna Sittard", odds1: "1.53", oddsX: "4.75", odds2: "5.25", tip1x2: "1", btts: "NG", csTip: "2-0", confidence: "High" },
+    { league: "🇳🇱 Netherlands Eredivisie", time: "19:00", home: "NAC Breda", away: "Ajax", odds1: "3.20", oddsX: "3.90", odds2: "2.05", tip1x2: "X2", btts: "GG", csTip: "1-2", confidence: "High" },
+    { league: "🇳🇱 Netherlands Eredivisie", time: "20:00", home: "Twente", away: "NEC Nijmegen", odds1: "1.91", oddsX: "4.00", odds2: "3.60", tip1x2: "1", btts: "GG", csTip: "3-1", confidence: "High" },
+    
+    // ========== SPAIN LA LIGA ==========
+    { league: "🇪🇸 Spain La Liga", time: "15:15", home: "Getafe", away: "Barcelona", odds1: "5.50", oddsX: "3.90", odds2: "1.62", tip1x2: "2", btts: "GG", csTip: "1-3", confidence: "High" },
+    { league: "🇪🇸 Spain La Liga", time: "17:30", home: "Valencia", away: "Girona", odds1: "2.05", oddsX: "3.40", odds2: "3.50", tip1x2: "X2", btts: "GG", csTip: "1-1", confidence: "Medium" },
+    { league: "🇪🇸 Spain La Liga", time: "20:00", home: "Atletico Madrid", away: "Athletic Club", odds1: "2.15", oddsX: "3.60", odds2: "3.10", tip1x2: "12", btts: "GG", csTip: "2-1", confidence: "High" },
+    
+    // ========== ENGLAND CHAMPIONSHIP ==========
+    { league: "🏴󠁧󠁢󠁥󠁮󠁧󠁿 England Championship", time: "12:30", home: "Charlton", away: "Hull City", odds1: "2.88", oddsX: "3.20", odds2: "2.50", tip1x2: "X2", btts: "GG", csTip: "1-1", confidence: "Medium" },
+    { league: "🏴󠁧󠁢󠁥󠁮󠁧󠁿 England Championship", time: "12:30", home: "West Brom", away: "Ipswich", odds1: "3.70", oddsX: "3.90", odds2: "1.90", tip1x2: "X2", btts: "GG", csTip: "1-2", confidence: "High" },
+    { league: "🏴󠁧󠁢󠁥󠁮󠁧󠁿 England Championship", time: "12:30", home: "Middlesbrough", away: "Watford", odds1: "1.42", oddsX: "4.75", odds2: "6.50", tip1x2: "1X", btts: "GG", csTip: "1-1", confidence: "High" },
+    { league: "🏴󠁧󠁢󠁥󠁮󠁧󠁿 England Championship", time: "15:00", home: "Sheffield Utd", away: "Preston", odds1: "1.62", oddsX: "4.50", odds2: "4.33", tip1x2: "1", btts: "GG", csTip: "2-1", confidence: "High" },
+    { league: "🏴󠁧󠁢󠁥󠁮󠁧󠁿 England Championship", time: "15:00", home: "Birmingham", away: "Bristol City", odds1: "1.73", oddsX: "3.80", odds2: "4.75", tip1x2: "1X", btts: "GG", csTip: "3-1", confidence: "High" },
+    { league: "🏴󠁧󠁢󠁥󠁮󠁧󠁿 England Championship", time: "15:00", home: "Norwich", away: "Swansea", odds1: "1.67", oddsX: "4.00", odds2: "4.75", tip1x2: "1", btts: "GG", csTip: "2-1", confidence: "High" },
+    { league: "🏴󠁧󠁢󠁥󠁮󠁧󠁿 England Championship", time: "15:00", home: "Oxford United", away: "Sheffield Wed", odds1: "1.44", oddsX: "4.75", odds2: "6.25", tip1x2: "1", btts: "NG", csTip: "2-0", confidence: "High" },
+    { league: "🏴󠁧󠁢󠁥󠁮󠁧󠁿 England Championship", time: "15:00", home: "Stoke City", away: "Portsmouth", odds1: "2.75", oddsX: "3.20", odds2: "2.60", tip1x2: "12", btts: "GG", csTip: "1-3", confidence: "Medium" },
+    { league: "🏴󠁧󠁢󠁥󠁮󠁧󠁿 England Championship", time: "15:00", home: "QPR", away: "Derby", odds1: "3.00", oddsX: "3.50", odds2: "2.25", tip1x2: "X2", btts: "NG", csTip: "0-2", confidence: "High" },
+    
+    // ========== ENGLAND FA CUP ==========
+    { league: "🏴󠁧󠁢󠁥󠁮󠁧󠁿 England FA Cup", time: "17:15", home: "Manchester City", away: "Southampton", odds1: "1.22", oddsX: "7.00", odds2: "10.00", tip1x2: "1", btts: "NG", csTip: "3-0", confidence: "High" }
+];
+
+// Your existing renderMatches function and rest of code stays exactly the same
     ];
     function getConfClass(conf) { if (conf === "High") return "conf-high"; if (conf === "Medium") return "conf-medium"; return "conf-low"; }
     function renderMatches() {
