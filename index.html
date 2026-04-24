@@ -4,261 +4,185 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>BetGenuine Pro | Sure Football Predictions</title>
-    <!-- Tailwind CSS + Font Awesome -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google AdSense Ready (Test mode - replace with your ID later) -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3940256099942544" crossorigin="anonymous"></script>
     <style>
-        /* Custom styles for table-like cards */
-        .match-row {
-            transition: all 0.2s ease;
-        }
-        .match-row:hover {
-            background-color: #fef9e3;
-            transform: scale(1.01);
-        }
-        .ad-container {
-            background: #f8fafc;
-            border-radius: 1rem;
-            border: 2px dashed #cbd5e1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100px;
-            text-align: center;
-        }
-        .ad-label {
-            background: #e2e8f0;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            color: #1e293b;
-        }
-        .confidence-badge {
-            font-size: 0.7rem;
-            font-weight: 700;
-            padding: 0.2rem 0.6rem;
-            border-radius: 20px;
-            display: inline-block;
-        }
+        .match-row:hover { background-color: #fef9e3; transform: scale(1.01); }
+        .ad-container { background: #f8fafc; border-radius: 1rem; border: 2px dashed #cbd5e1; display: flex; align-items: center; justify-content: center; min-height: 100px; text-align: center; }
+        .confidence-badge { font-size: 0.7rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 20px; display: inline-block; }
         .conf-high { background: #dcfce7; color: #15803d; }
         .conf-medium { background: #fef9c3; color: #854d0e; }
         .conf-low { background: #ffe4e6; color: #be123c; }
-        @media (max-width: 768px) {
-            .match-grid {
-                font-size: 0.8rem;
-            }
-            .ad-container {
-                min-height: 80px;
-            }
-        }
-        /* Logo animation subtle */
-        .logo-icon {
-            transition: transform 0.2s ease;
-        }
-        .logo-icon:hover {
-            transform: scale(1.05) rotate(3deg);
-        }
+        @media (max-width: 768px) { .ad-container { min-height: 80px; } }
     </style>
 </head>
 <body class="bg-gray-100 font-sans">
 
-    <!-- =================== TOP BANNER AD SPACE =================== -->
-    <div class="bg-white border-b border-gray-200 shadow-sm">
-        <div class="container mx-auto px-4 py-2 text-center">
-            <div id="top-ad" class="ad-container bg-gray-50">
-                <span class="text-gray-500 text-sm"><i class="fas fa-ad"></i> 728x90 Banner Ad – Google AdSense Ready</span>
+<!-- TOP BANNER AD -->
+<div class="bg-white border-b border-gray-200 shadow-sm">
+    <div class="container mx-auto px-4 py-2 text-center">
+        <div id="top-ad" class="ad-container bg-gray-50">
+            <span class="text-gray-500 text-sm"><i class="fas fa-ad"></i> 728x90 Banner Ad – Google AdSense Ready</span>
+        </div>
+    </div>
+</div>
+
+<!-- ========== VISIBLE LOGO HEADER ========== -->
+<div class="bg-gradient-to-r from-green-900 to-green-800 py-4 shadow-lg border-b-4 border-yellow-500">
+    <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center flex-wrap gap-4">
+            <!-- LOGO SECTION - BOLD AND VISIBLE -->
+            <div class="flex items-center gap-4">
+                <!-- Soccer Ball Icon -->
+                <div class="bg-yellow-500 w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg">
+                    <i class="fas fa-futbol text-green-900 text-3xl"></i>
+                </div>
+                <!-- Text Logo -->
+                <div>
+                    <div class="flex items-baseline gap-1">
+                        <span class="text-yellow-500 font-black text-3xl md:text-4xl tracking-tight">BET</span>
+                        <span class="text-white font-black text-3xl md:text-4xl tracking-tight">GENUINE</span>
+                        <span class="text-yellow-500 text-sm font-bold ml-1">™</span>
+                    </div>
+                    <p class="text-green-300 text-sm font-bold mt-0">⚡ 100% SURE FOOTBALL PREDICTIONS ⚡</p>
+                </div>
+            </div>
+            <!-- Right Badge -->
+            <div class="bg-yellow-500/20 rounded-full px-4 py-2 border border-yellow-500/50">
+                <span class="text-yellow-300 font-bold text-sm"><i class="fas fa-trophy mr-1"></i> 89% ACCURACY</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<main class="container mx-auto px-4 py-8">
+
+    <div class="flex flex-wrap justify-between items-center gap-3 mb-6">
+        <div class="bg-white rounded-full px-4 py-2 shadow text-sm font-semibold text-gray-700">
+            <i class="far fa-calendar-alt text-green-700"></i> <span id="currentDate"></span>
+        </div>
+        <div class="flex gap-2 text-xs font-bold">
+            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full">📊 Accuracy 89%</span>
+            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full">🔥 Premium Tips</span>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <div class="lg:col-span-3">
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="min-w-full text-sm">
+                        <thead class="bg-gray-800 text-white text-xs uppercase tracking-wider">
+                            <tr>
+                                <th class="px-3 py-3 text-left">League</th>
+                                <th class="px-2 py-3 text-center">Time</th>
+                                <th class="px-3 py-3 text-left">Home</th>
+                                <th class="px-1 py-3 text-center">Away</th>
+                                <th class="px-2 py-3 text-center">1</th>
+                                <th class="px-2 py-3 text-center">X</th>
+                                <th class="px-2 py-3 text-center">2</th>
+                                <th class="px-2 py-3 text-center">1x2 Tip</th>
+                                <th class="px-2 py-3 text-center">BTTS</th>
+                                <th class="px-2 py-3 text-center">CS Tip</th>
+                                <th class="px-2 py-3 text-center">Conf.</th>
+                            </tr>
+                        </thead>
+                        <tbody id="matches-table-body"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="infeed-ad" class="ad-container mt-6">
+                <span class="text-gray-500 text-sm"><i class="fas fa-ad"></i> In-Feed Ad – Perfect for native ads</span>
+            </div>
+        </div>
+
+        <div class="space-y-6">
+            <div id="sidebar-ad" class="ad-container flex-col gap-2 p-4 bg-white shadow">
+                <i class="fas fa-ad text-gray-400"></i>
+                <span class="text-gray-500 text-xs">300x250 Sidebar Ad – Google AdSense</span>
+            </div>
+            <div class="bg-white rounded-xl p-4 shadow">
+                <h3 class="font-bold text-gray-800 border-b pb-2 mb-2 flex items-center gap-2"><i class="fas fa-chart-line text-green-600"></i> Top Predictors</h3>
+                <div class="space-y-2 text-sm">
+                    <div class="flex justify-between"><span>1. Brian Festus</span><span class="text-green-700 font-bold">289 pts</span></div>
+                    <div class="flex justify-between"><span>2. Alex Wanjala</span><span class="text-green-700 font-bold">252 pts</span></div>
+                    <div class="flex justify-between"><span>3. Sarah Otieno</span><span class="text-green-700 font-bold">198 pts</span></div>
+                </div>
+            </div>
+            <div class="bg-gradient-to-r from-yellow-50 to-amber-50 rounded-xl p-4 text-center border border-amber-200">
+                <i class="fas fa-gem text-amber-600 text-xl"></i>
+                <p class="font-bold mt-1">⭐ Premium Tips – 95% win rate</p>
+                <button class="bg-green-700 text-white text-sm px-4 py-1 rounded-full mt-2">Chat on WhatsApp →</button>
             </div>
         </div>
     </div>
 
-    <!-- =================== NEW PROFESSIONAL LOGO HEADER (added without altering anything else) =================== -->
-    <header class="sticky top-0 z-50 bg-gradient-to-r from-emerald-900 via-green-800 to-emerald-900 shadow-xl">
-        <div class="container mx-auto px-4 py-3">
-            <div class="flex flex-wrap justify-between items-center gap-4">
-                <!-- Main Logo Area: icon + text + badge -->
-                <div class="flex items-center gap-3">
-                    <!-- Animated Icon Box -->
-                    <div class="logo-icon bg-gradient-to-br from-yellow-400 to-amber-500 w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg transform -rotate-6">
-                        <i class="fas fa-futbol text-green-900 text-2xl drop-shadow-sm"></i>
-                    </div>
-                    <!-- Text Brand -->
-                    <div>
-                        <div class="flex items-baseline gap-1">
-                            <span class="text-yellow-400 font-black text-2xl md:text-3xl tracking-tight drop-shadow-md">BET</span>
-                            <span class="text-white font-black text-2xl md:text-3xl tracking-tight drop-shadow-md">GENUINE</span>
-                            <span class="text-yellow-400 text-xs font-bold ml-0.5">®</span>
-                        </div>
-                        <p class="text-emerald-200 text-[10px] md:text-xs font-semibold -mt-0.5 tracking-wide">⚡ 100% SURE FOOTBALL PREDICTIONS ⚡</p>
-                    </div>
-                </div>
-                <!-- Trust / Stats Badge (keeps the header lively) -->
-                <div class="flex items-center gap-2">
-                    <div class="hidden sm:flex bg-white/10 backdrop-blur-sm rounded-full px-3 py-1.5 border border-white/20">
-                        <span class="text-yellow-300 text-xs font-bold"><i class="fas fa-chart-line mr-1"></i> 89% ACCURACY</span>
-                    </div>
-                    <div class="bg-yellow-500/20 backdrop-blur-sm rounded-full px-3 py-1.5 border border-yellow-500/30">
-                        <span class="text-yellow-200 text-xs font-bold"><i class="far fa-calendar-alt mr-1"></i> DAILY TIPS</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- =================== MAIN CONTENT (everything else remains identical) =================== -->
-    <main class="container mx-auto px-4 py-8">
-        
-        <!-- Today's date & stats -->
-        <div class="flex flex-wrap justify-between items-center gap-3 mb-6">
-            <div class="bg-white rounded-full px-4 py-2 shadow text-sm font-semibold text-gray-700">
-                <i class="far fa-calendar-alt text-green-700"></i> <span id="currentDate"></span>
-            </div>
-            <div class="flex gap-2 text-xs font-bold">
-                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full">📊 Accuracy 89%</span>
-                <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full">🔥 Premium Tips</span>
-            </div>
-        </div>
-
-        <!-- Two column layout: matches (left) + sidebar (right) -->
-        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
-            <!-- MATCHES SECTION (3/4 width) -->
-            <div class="lg:col-span-3">
-                <div class="bg-white rounded-2xl shadow-md overflow-hidden">
-                    <div class="overflow-x-auto">
-                        <table class="min-w-full text-sm">
-                            <thead class="bg-gray-800 text-white text-xs uppercase tracking-wider">
-                                <tr>
-                                    <th class="px-3 py-3 text-left">League</th>
-                                    <th class="px-2 py-3 text-center">Time</th>
-                                    <th class="px-3 py-3 text-left">Home</th>
-                                    <th class="px-1 py-3 text-center">Away</th>
-                                    <th class="px-2 py-3 text-center">1</th>
-                                    <th class="px-2 py-3 text-center">X</th>
-                                    <th class="px-2 py-3 text-center">2</th>
-                                    <th class="px-2 py-3 text-center">1x2 Tip</th>
-                                    <th class="px-2 py-3 text-center">BTTS</th>
-                                    <th class="px-2 py-3 text-center">CS Tip</th>
-                                    <th class="px-2 py-3 text-center">Conf.</th>
-                                </tr>
-                            </thead>
-                            <tbody id="matches-table-body">
-                                <!-- rows injected via JS -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <!-- In-Feed Ad (after matches list) -->
-                <div id="infeed-ad" class="ad-container mt-6">
-                    <span class="text-gray-500 text-sm"><i class="fas fa-ad"></i> In-Feed Ad – Perfect for native ads</span>
-                </div>
-            </div>
-
-            <!-- RIGHT SIDEBAR: AD + LEADERBOARD + PREMIUM (unchanged) -->
-            <div class="space-y-6">
-                <!-- Sidebar Ad -->
-                <div id="sidebar-ad" class="ad-container flex-col gap-2 p-4 bg-white shadow">
-                    <i class="fas fa-ad text-gray-400"></i>
-                    <span class="text-gray-500 text-xs">300x250 Sidebar Ad – Google AdSense</span>
-                </div>
-
-                <!-- Sample Leaderboard -->
-                <div class="bg-white rounded-xl p-4 shadow">
-                    <h3 class="font-bold text-gray-800 border-b pb-2 mb-2 flex items-center gap-2"><i class="fas fa-chart-line text-green-600"></i> Top Predictors</h3>
-                    <div class="space-y-2 text-sm">
-                        <div class="flex justify-between"><span>1. Brian Festus</span><span class="text-green-700 font-bold">289 pts</span></div>
-                        <div class="flex justify-between"><span>2. Alex Wanjala</span><span class="text-green-700 font-bold">252 pts</span></div>
-                        <div class="flex justify-between"><span>3. Sarah Otieno</span><span class="text-green-700 font-bold">198 pts</span></div>
-                    </div>
-                </div>
-
-                <!-- Premium CTA -->
-                <div class="bg-gradient-to-r from-yellow-50 to-amber-50 rounded-xl p-4 text-center border border-amber-200">
-                    <i class="fas fa-gem text-amber-600 text-xl"></i>
-                    <p class="font-bold mt-1">⭐ Premium Tips – 95% win rate</p>
-                    <button class="bg-green-700 text-white text-sm px-4 py-1 rounded-full mt-2">Chat on WhatsApp →</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- BOTTOM FOOTER AD -->
-        <div id="footer-ad" class="ad-container mt-10">
-            <span class="text-gray-500 text-sm"><i class="fas fa-ad"></i> Footer Banner – 728x90 (AdSense ready)</span>
-        </div>
-
-        <footer class="text-center text-gray-500 text-xs mt-8 border-t pt-6">
-            <p>© 2024 BetGenuine Clone — For entertainment only. 18+ only. Predictions are opinions, not guarantees.</p>
-            <p class="mt-1">⚡ All ad slots are pre‑positioned – replace with Google AdSense code when approved.</p>
-        </footer>
-    </main>
-
-    <script>
-        // ============================================================
-        // ✏️ YOUR DAILY MATCHES – EDIT THIS ARRAY EVERY DAY
-        // ============================================================
-        const matchesData = [
-            { league: "Belgium Jupiler Pro League", time: "19:45", home: "Cercle Brugge", away: "Dender", odds1: "1.45", oddsX: "4.20", odds2: "6.25", tip1x2: "1X", btts: "GG", csTip: "3-1", confidence: "High" },
-            { league: "Italy Serie A", time: "19:45", home: "Napoli", away: "Cremonese", odds1: "1.33", oddsX: "5.00", odds2: "10.00", tip1x2: "1", btts: "NG", csTip: "3-0", confidence: "High" },
-            { league: "Spain La Liga", time: "20:00", home: "Real Betis", away: "Real Madrid", odds1: "3.60", oddsX: "4.20", odds2: "1.85", tip1x2: "X2", btts: "GG", csTip: "1-2", confidence: "High" },
-            { league: "Scotland Championship", time: "19:45", home: "ST Johnstone", away: "Raith Rovers", odds1: "1.48", oddsX: "3.90", odds2: "6.00", tip1x2: "1X", btts: "NG", csTip: "3-0", confidence: "Medium" },
-            { league: "Indonesia Liga 1 (LIVE)", time: "LIVE", home: "Persib Bandung", away: "Arema FC", odds1: "1.20", oddsX: "6.00", odds2: "11.00", tip1x2: "1", btts: "NG", csTip: "3-0", confidence: "High" },
-            { league: "France Ligue 1", time: "19:45", home: "Stade Brestois 29", away: "Lens", odds1: "5.00", oddsX: "4.00", odds2: "1.67", tip1x2: "2", btts: "GG", csTip: "1-2", confidence: "High" },
-            { league: "England Premier League", time: "20:00", home: "Sunderland", away: "Nottm Forest", odds1: "2.80", oddsX: "3.20", odds2: "2.62", tip1x2: "1X", btts: "GG", csTip: "1-1", confidence: "Medium" },
-            { league: "Germany Bundesliga", time: "19:30", home: "RB Leipzig", away: "Union Berlin", odds1: "1.33", oddsX: "5.50", odds2: "8.50", tip1x2: "1", btts: "GG", csTip: "3-1", confidence: "High" },
-            { league: "Portugal Primeira Liga", time: "20:15", home: "Alverca", away: "Arouca", odds1: "2.30", oddsX: "3.20", odds2: "3.20", tip1x2: "1X", btts: "GG", csTip: "1-1", confidence: "Medium" },
-            { league: "France Ligue 2", time: "19:00", home: "Annecy", away: "PAU", odds1: "1.91", oddsX: "3.40", odds2: "3.60", tip1x2: "1X", btts: "GG", csTip: "2-1", confidence: "Medium" },
-            { league: "Turkey Süper Lig", time: "18:00", home: "Başakşehir", away: "Kasımpaşa", odds1: "1.67", oddsX: "4.00", odds2: "4.75", tip1x2: "1X", btts: "GG", csTip: "3-1", confidence: "High" },
-            { league: "England Championship", time: "20:00", home: "Leicester", away: "Millwall", odds1: "3.90", oddsX: "3.80", odds2: "1.85", tip1x2: "X2", btts: "GG", csTip: "1-2", confidence: "High" },
-            { league: "Poland Ekstraklasa", time: "19:30", home: "Jagiellonia", away: "Gornik Zabrze", odds1: "2.25", oddsX: "3.30", odds2: "2.88", tip1x2: "1X", btts: "GG", csTip: "2-1", confidence: "Medium" },
-            { league: "Ireland Premier Division", time: "19:45", home: "Shelbourne", away: "Drogheda Utd", odds1: "1.67", oddsX: "3.40", odds2: "5.00", tip1x2: "1X", btts: "GG", csTip: "2-1", confidence: "Medium" }
-        ];
-
-        // Helper: confidence badge class
-        function getConfClass(conf) {
-            if (conf === "High") return "conf-high";
-            if (conf === "Medium") return "conf-medium";
-            return "conf-low";
-        }
-
-        // Render table rows
-        function renderMatches() {
-            const tbody = document.getElementById("matches-table-body");
-            if (!tbody) return;
-            tbody.innerHTML = "";
-            matchesData.forEach(m => {
-                const row = document.createElement("tr");
-                row.className = "border-b border-gray-100 hover:bg-yellow-50 transition match-row";
-                row.innerHTML = `
-                    <td class="px-3 py-3 font-semibold text-gray-800">${m.league}</td>
-                    <td class="px-2 py-3 text-center text-gray-600 text-xs">${m.time}</td>
-                    <td class="px-3 py-3 font-bold text-gray-900">${m.home}</td>
-                    <td class="px-1 py-3 text-center font-bold text-gray-900">${m.away}</td>
-                    <td class="px-2 py-3 text-center font-mono text-green-700">${m.odds1}</td>
-                    <td class="px-2 py-3 text-center font-mono text-green-700">${m.oddsX}</td>
-                    <td class="px-2 py-3 text-center font-mono text-green-700">${m.odds2}</td>
-                    <td class="px-2 py-3 text-center font-extrabold text-blue-800">${m.tip1x2}</td>
-                    <td class="px-2 py-3 text-center font-bold text-indigo-700">${m.btts}</td>
-                    <td class="px-2 py-3 text-center font-mono text-amber-700">${m.csTip}</td>
-                    <td class="px-2 py-3 text-center"><span class="confidence-badge ${getConfClass(m.confidence)}">${m.confidence}</span></td>
-                `;
-                tbody.appendChild(row);
-            });
-        }
-
-        // Set today's date
-        const today = new Date();
-        const formatted = today.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
-        document.getElementById("currentDate").innerHTML = `📅 ${formatted}`;
-
-        renderMatches();
-    </script>
-
-    <!-- Floating help button for daily edits (unchanged) -->
-    <div class="fixed bottom-4 right-4 z-40">
-        <button onclick="alert('📝 TO UPDATE MATCHES:\n1. Edit the matchesData array in the HTML file (look for ✏️ YOUR DAILY MATCHES).\n2. Replace or add matches.\n3. Commit changes on GitHub → Vercel auto deploys.')" class="bg-green-800 text-white p-2 rounded-full shadow-lg hover:bg-green-700 w-10 h-10 flex items-center justify-center">
-            <i class="fas fa-edit"></i>
-        </button>
+    <div id="footer-ad" class="ad-container mt-10">
+        <span class="text-gray-500 text-sm"><i class="fas fa-ad"></i> Footer Banner – 728x90 (AdSense ready)</span>
     </div>
+
+    <footer class="text-center text-gray-500 text-xs mt-8 border-t pt-6">
+        <p>© 2024 BetGenuine — For entertainment only. 18+ only. Predictions are opinions, not guarantees.</p>
+        <p class="mt-1">⚡ All ad slots are pre‑positioned – replace with Google AdSense code when approved.</p>
+    </footer>
+</main>
+
+<script>
+    const matchesData = [
+        { league: "Belgium Jupiler Pro League", time: "19:45", home: "Cercle Brugge", away: "Dender", odds1: "1.45", oddsX: "4.20", odds2: "6.25", tip1x2: "1X", btts: "GG", csTip: "3-1", confidence: "High" },
+        { league: "Italy Serie A", time: "19:45", home: "Napoli", away: "Cremonese", odds1: "1.33", oddsX: "5.00", odds2: "10.00", tip1x2: "1", btts: "NG", csTip: "3-0", confidence: "High" },
+        { league: "Spain La Liga", time: "20:00", home: "Real Betis", away: "Real Madrid", odds1: "3.60", oddsX: "4.20", odds2: "1.85", tip1x2: "X2", btts: "GG", csTip: "1-2", confidence: "High" },
+        { league: "Scotland Championship", time: "19:45", home: "ST Johnstone", away: "Raith Rovers", odds1: "1.48", oddsX: "3.90", odds2: "6.00", tip1x2: "1X", btts: "NG", csTip: "3-0", confidence: "Medium" },
+        { league: "Indonesia Liga 1 (LIVE)", time: "LIVE", home: "Persib Bandung", away: "Arema FC", odds1: "1.20", oddsX: "6.00", odds2: "11.00", tip1x2: "1", btts: "NG", csTip: "3-0", confidence: "High" },
+        { league: "France Ligue 1", time: "19:45", home: "Stade Brestois 29", away: "Lens", odds1: "5.00", oddsX: "4.00", odds2: "1.67", tip1x2: "2", btts: "GG", csTip: "1-2", confidence: "High" },
+        { league: "England Premier League", time: "20:00", home: "Sunderland", away: "Nottm Forest", odds1: "2.80", oddsX: "3.20", odds2: "2.62", tip1x2: "1X", btts: "GG", csTip: "1-1", confidence: "Medium" },
+        { league: "Germany Bundesliga", time: "19:30", home: "RB Leipzig", away: "Union Berlin", odds1: "1.33", oddsX: "5.50", odds2: "8.50", tip1x2: "1", btts: "GG", csTip: "3-1", confidence: "High" },
+        { league: "Portugal Primeira Liga", time: "20:15", home: "Alverca", away: "Arouca", odds1: "2.30", oddsX: "3.20", odds2: "3.20", tip1x2: "1X", btts: "GG", csTip: "1-1", confidence: "Medium" },
+        { league: "Turkey Süper Lig", time: "18:00", home: "Başakşehir", away: "Kasımpaşa", odds1: "1.67", oddsX: "4.00", odds2: "4.75", tip1x2: "1X", btts: "GG", csTip: "3-1", confidence: "High" },
+        { league: "England Championship", time: "20:00", home: "Leicester", away: "Millwall", odds1: "3.90", oddsX: "3.80", odds2: "1.85", tip1x2: "X2", btts: "GG", csTip: "1-2", confidence: "High" }
+    ];
+
+    function getConfClass(conf) {
+        if (conf === "High") return "conf-high";
+        if (conf === "Medium") return "conf-medium";
+        return "conf-low";
+    }
+
+    function renderMatches() {
+        const tbody = document.getElementById("matches-table-body");
+        if (!tbody) return;
+        tbody.innerHTML = "";
+        matchesData.forEach(m => {
+            const row = document.createElement("tr");
+            row.className = "border-b border-gray-100 hover:bg-yellow-50 transition match-row";
+            row.innerHTML = `
+                <td class="px-3 py-3 font-semibold text-gray-800">${m.league}</td>
+                <td class="px-2 py-3 text-center text-gray-600 text-xs">${m.time}</td>
+                <td class="px-3 py-3 font-bold text-gray-900">${m.home}</td>
+                <td class="px-1 py-3 text-center font-bold text-gray-900">${m.away}</td>
+                <td class="px-2 py-3 text-center font-mono text-green-700">${m.odds1}</td>
+                <td class="px-2 py-3 text-center font-mono text-green-700">${m.oddsX}</td>
+                <td class="px-2 py-3 text-center font-mono text-green-700">${m.odds2}</td>
+                <td class="px-2 py-3 text-center font-extrabold text-blue-800">${m.tip1x2}</td>
+                <td class="px-2 py-3 text-center font-bold text-indigo-700">${m.btts}</td>
+                <td class="px-2 py-3 text-center font-mono text-amber-700">${m.csTip}</td>
+                <td class="px-2 py-3 text-center"><span class="confidence-badge ${getConfClass(m.confidence)}">${m.confidence}</span></td>
+            `;
+            tbody.appendChild(row);
+        });
+    }
+
+    const today = new Date();
+    const formatted = today.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+    document.getElementById("currentDate").innerHTML = `📅 ${formatted}`;
+    renderMatches();
+</script>
+
+<div class="fixed bottom-4 right-4 z-40">
+    <button onclick="alert('📝 TO UPDATE MATCHES:\nEdit the matchesData array in the HTML file.\nCommit changes on GitHub → Vercel auto deploys.')" class="bg-green-800 text-white p-2 rounded-full shadow-lg hover:bg-green-700 w-10 h-10 flex items-center justify-center">
+        <i class="fas fa-edit"></i>
+    </button>
+</div>
 </body>
 </html>
