@@ -173,57 +173,67 @@
     // ============================================================
     const matchesData = [
         // ---------- SURE BETS (High confidence highlighted) ----------
-        { league: "🇩🇿 Algeria Ligue 1", time: "20:00", home: "USM Alger", away: "Paradou AC", odds1: "--", oddsX: "--", odds2: "--", tip1x2: "1X", btts: "GG", csTip: "2-1", confidence: "High", isSure: true },
-        { league: "🇸🇦 Saudi-Arabia Pro League", time: "19:00", home: "Al-Hilal Saudi FC", away: "Damac", odds1: "--", oddsX: "--", odds2: "--", tip1x2: "1", btts: "GG", csTip: "3-1", confidence: "High", isSure: true },
-        { league: "🇮🇩 Indonesia Liga 1", time: "13:00", home: "PSBS Biak Numfor", away: "Malut United", odds1: "--", oddsX: "--", odds2: "--", tip1x2: "2", btts: "GG", csTip: "1-3", confidence: "High", isSure: true },
+        { league: "🇵🇹 Portugal Primeira Liga", time: "20:15", home: "Sporting CP", away: "Tondela", odds1: "1.10", oddsX: "11.80", odds2: "24.00", tip1x2: "1", btts: "NG", csTip: "3-0", confidence: "High", isSure: true },
+        { league: "🇹🇭 Thailand Thai League 1", time: "13:00", home: "Rayong FC", away: "Buriram United", odds1: "6.45", oddsX: "4.82", odds2: "1.46", tip1x2: "X2", btts: "GG", csTip: "1-3", confidence: "High", isSure: true },
+        { league: "🇩🇪 Germany Frauen Bundesliga", time: "17:00", home: "Werder Bremen W", away: "Bayern Munich W", odds1: "11.70", oddsX: "6.10", odds2: "1.19", tip1x2: "2", btts: "NG", csTip: "0-2", confidence: "High", isSure: true },
+        { league: "🇿🇦 South-Africa Premier Soccer League", time: "18:30", home: "Polokwane City", away: "Mamelodi Sundowns", odds1: "7.26", oddsX: "3.74", odds2: "1.44", tip1x2: "2", btts: "NG", csTip: "0-3", confidence: "High", isSure: true },
+        
+        // ========== NETHERLANDS EREDIVISIE ==========
+        { league: "🇳🇱 Netherlands Eredivisie", time: "17:45", home: "Den Bosch", away: "Almere City FC", odds1: "2.54", oddsX: "3.58", odds2: "2.51", tip1x2: "12", btts: "GG", csTip: "1-3", confidence: "Medium", isSure: false },
         
         // ========== WORLD UEFA CHAMPIONS LEAGUE ==========
-        { league: "🌍 World UEFA Champions League", time: "20:00", home: "Paris Saint Germain", away: "Bayern München", odds1: "2.30", oddsX: "3.80", odds2: "2.75", tip1x2: "1X", btts: "GG", csTip: "2-2", confidence: "High", isSure: false },
-        
-        // ========== ALGERIA LIGUE 1 (additional) ==========
-        { league: "🇩🇿 Algeria Ligue 1", time: "20:00", home: "USM Alger", away: "Paradou AC", odds1: "--", oddsX: "--", odds2: "--", tip1x2: "1", btts: "GG", csTip: "2-1", confidence: "High", isSure: false },
+        { league: "🌍 World UEFA Champions League", time: "20:00", home: "Atletico Madrid", away: "Arsenal", odds1: "2.94", oddsX: "3.32", odds2: "2.67", tip1x2: "X2", btts: "GG", csTip: "1-2", confidence: "High", isSure: false },
         
         // ========== EGYPT PREMIER LEAGUE ==========
-        { league: "🇪🇬 Egypt Premier League", time: "15:00", home: "Petrojet", away: "Ismaily SC", odds1: "--", oddsX: "--", odds2: "--", tip1x2: "1X", btts: "NG", csTip: "1-0", confidence: "Medium", isSure: false },
-        { league: "🇪🇬 Egypt Premier League", time: "18:00", home: "El Mokawloon", away: "Ghazl El Mehalla", odds1: "--", oddsX: "--", odds2: "--", tip1x2: "X", btts: "GG", csTip: "1-1", confidence: "Medium", isSure: false },
-        { league: "🇪🇬 Egypt Premier League", time: "18:00", home: "Kahraba Ismailia", away: "National Bank of Egypt", odds1: "--", oddsX: "--", odds2: "--", tip1x2: "X2", btts: "GG", csTip: "1-2", confidence: "Medium", isSure: false },
+        { league: "🇪🇬 Egypt Premier League", time: "15:00", home: "El Gouna FC", away: "Haras El Hodood", odds1: "1.95", oddsX: "2.73", odds2: "4.56", tip1x2: "1X", btts: "NG", csTip: "1-0", confidence: "Medium", isSure: false },
+        { league: "🇪🇬 Egypt Premier League", time: "18:00", home: "Future FC", away: "El Geish", odds1: "2.62", oddsX: "2.51", odds2: "3.14", tip1x2: "1X", btts: "GG", csTip: "1-1", confidence: "Medium", isSure: false },
+        { league: "🇪🇬 Egypt Premier League", time: "18:00", home: "Wadi Degla", away: "Al Ittihad", odds1: "2.27", oddsX: "2.67", odds2: "3.52", tip1x2: "X", btts: "NG", csTip: "0-0", confidence: "Low", isSure: false },
         
-        // ========== ENGLAND CHAMPIONSHIP ==========
-        { league: "🏴󠁧󠁢󠁥󠁮󠁧󠁿 England Championship", time: "19:45", home: "Southampton", away: "Ipswich", odds1: "2.15", oddsX: "3.40", odds2: "3.10", tip1x2: "X2", btts: "GG", csTip: "1-2", confidence: "High", isSure: false },
+        // ========== ENGLAND NATIONAL LEAGUE ==========
+        { league: "🏴󠁧󠁢󠁥󠁮󠁧󠁿 England National League", time: "19:45", home: "Boreham Wood", away: "Forest Green", odds1: "1.88", oddsX: "3.70", odds2: "3.68", tip1x2: "1X", btts: "GG", csTip: "2-1", confidence: "High", isSure: false },
         
-        // ========== ENGLAND LEAGUE ONE ==========
-        { league: "🏴󠁧󠁢󠁥󠁮󠁧󠁿 England League One", time: "19:45", home: "Northampton", away: "Barnsley", odds1: "2.90", oddsX: "3.40", odds2: "2.25", tip1x2: "X2", btts: "GG", csTip: "1-2", confidence: "High", isSure: false },
-        { league: "🏴󠁧󠁢󠁥󠁮󠁧󠁿 England League One", time: "19:45", home: "Peterborough", away: "Mansfield Town", odds1: "2.50", oddsX: "3.60", odds2: "2.45", tip1x2: "X2", btts: "GG", csTip: "1-2", confidence: "Medium", isSure: false },
-        { league: "🏴󠁧󠁢󠁥󠁮󠁧󠁿 England League One", time: "19:45", home: "Stockport County", away: "Port Vale", odds1: "1.40", oddsX: "4.75", odds2: "5.75", tip1x2: "1", btts: "GG", csTip: "3-1", confidence: "High", isSure: false },
+        // ========== THAILAND THAI LEAGUE 1 (additional) ==========
+        { league: "🇹🇭 Thailand Thai League 1", time: "12:00", home: "Chiangrai United", away: "Ratchaburi", odds1: "3.82", oddsX: "3.66", odds2: "1.95", tip1x2: "X2", btts: "GG", csTip: "1-2", confidence: "High", isSure: false },
+        { league: "🇹🇭 Thailand Thai League 1", time: "12:30", home: "Uthai Thani", away: "Bangkok United", odds1: "2.84", oddsX: "3.38", odds2: "2.51", tip1x2: "12", btts: "GG", csTip: "1-2", confidence: "Medium", isSure: false },
         
-        // ========== LATVIA VIRSLIGA ==========
-        { league: "🇱🇻 Latvia Virsliga", time: "16:00", home: "FK Liepaja", away: "Grobiņa", odds1: "--", oddsX: "--", odds2: "--", tip1x2: "1", btts: "GG", csTip: "2-1", confidence: "High", isSure: false },
-        { league: "🇱🇻 Latvia Virsliga", time: "18:00", home: "Rīgas FS", away: "Riga", odds1: "--", oddsX: "--", odds2: "--", tip1x2: "12", btts: "GG", csTip: "3-1", confidence: "Medium", isSure: false },
+        // ========== FINLAND VEIKKAUSLIIGA ==========
+        { league: "🇫🇮 Finland Veikkausliiga", time: "17:00", home: "Inter Turku", away: "HJK Helsinki", odds1: "2.38", oddsX: "3.46", odds2: "2.79", tip1x2: "1X", btts: "GG", csTip: "2-1", confidence: "Medium", isSure: false },
         
-        // ========== ARGENTINA LIGA PROFESIONAL ==========
-        { league: "🇦🇷 Argentina Liga Profesional", time: "FIN.", home: "Huracan", away: "Argentinos JRS", odds1: "3.10", oddsX: "2.75", odds2: "2.70", tip1x2: "X2", btts: "NG", csTip: "0-2", confidence: "High", isSure: false },
+        // ========== JAPAN J1 LEAGUE ==========
+        { league: "🇯🇵 Japan J1 League", time: "FIN.", home: "Shimizu S-pulse", away: "V-varen Nagasaki", odds1: "2.12", oddsX: "3.28", odds2: "3.44", tip1x2: "1X", btts: "NG", csTip: "2-0", confidence: "Medium", isSure: false },
+        { league: "🇯🇵 Japan J1 League", time: "FIN.", home: "Tokyo Verdy", away: "Kashima", odds1: "4.24", oddsX: "3.28", odds2: "1.90", tip1x2: "X2", btts: "NG", csTip: "0-2", confidence: "High", isSure: false },
+        { league: "🇯🇵 Japan J1 League", time: "LIVE", home: "Avispa Fukuoka", away: "Sanfrecce Hiroshima", odds1: "4.76", oddsX: "3.62", odds2: "1.72", tip1x2: "X2", btts: "GG", csTip: "1-2", confidence: "High", isSure: false },
+        { league: "🇯🇵 Japan J1 League", time: "LIVE", home: "JEF United Chiba", away: "Yokohama F. Marinos", odds1: "2.92", oddsX: "3.28", odds2: "2.38", tip1x2: "X2", btts: "GG", csTip: "1-2", confidence: "High", isSure: false },
+        { league: "🇯🇵 Japan J1 League", time: "LIVE", home: "Vissel Kobe", away: "Cerezo Osaka", odds1: "1.80", oddsX: "3.76", odds2: "4.08", tip1x2: "1X", btts: "GG", csTip: "2-1", confidence: "High", isSure: false },
+        { league: "🇯🇵 Japan J1 League", time: "07:00", home: "Kyoto Sanga", away: "Gamba Osaka", odds1: "2.37", oddsX: "3.44", odds2: "2.82", tip1x2: "X2", btts: "GG", csTip: "1-3", confidence: "Medium", isSure: false },
+        { league: "🇯🇵 Japan J1 League", time: "07:00", home: "Nagoya Grampus", away: "Fagiano Okayama", odds1: "1.96", oddsX: "3.28", odds2: "3.96", tip1x2: "1X", btts: "NG", csTip: "2-0", confidence: "High", isSure: false },
+        { league: "🇯🇵 Japan J1 League", time: "07:00", home: "Urawa", away: "Kawasaki Frontale", odds1: "2.26", oddsX: "3.52", odds2: "2.94", tip1x2: "1X", btts: "GG", csTip: "1-1", confidence: "Medium", isSure: false },
+        { league: "🇯🇵 Japan J1 League", time: "08:00", home: "Kashiwa Reysol", away: "FC Tokyo", odds1: "2.33", oddsX: "3.35", odds2: "2.94", tip1x2: "X2", btts: "GG", csTip: "1-1", confidence: "Medium", isSure: false },
+        { league: "🇯🇵 Japan J1 League", time: "08:00", home: "Mito Hollyhock", away: "Machida Zelvia", odds1: "3.64", oddsX: "3.18", odds2: "2.09", tip1x2: "X2", btts: "NG", csTip: "0-2", confidence: "High", isSure: false },
         
-        // ========== ISRAEL LIGAT HA'AL ==========
-        { league: "🇮🇱 Israel Ligat Ha'al", time: "17:00", home: "Bnei Sakhnin", away: "Ashdod", odds1: "--", oddsX: "--", odds2: "--", tip1x2: "1X", btts: "GG", csTip: "1-1", confidence: "Medium", isSure: false },
-        { league: "🇮🇱 Israel Ligat Ha'al", time: "17:30", home: "Maccabi Tel Aviv", away: "Hapoel Beer Sheva", odds1: "--", oddsX: "--", odds2: "--", tip1x2: "X2", btts: "GG", csTip: "1-3", confidence: "High", isSure: false },
-        { league: "🇮🇱 Israel Ligat Ha'al", time: "18:00", home: "Beitar Jerusalem", away: "Hapoel Petah Tikva", odds1: "--", oddsX: "--", odds2: "--", tip1x2: "1", btts: "NG", csTip: "3-0", confidence: "High", isSure: false },
+        // ========== NORWAY ELITESERIEN ==========
+        { league: "🇳🇴 Norway Eliteserien", time: "18:00", home: "Tromso", away: "Brann", odds1: "1.98", oddsX: "3.63", odds2: "3.76", tip1x2: "1X", btts: "GG", csTip: "2-1", confidence: "High", isSure: false },
         
-        // ========== PORTUGAL SEGUNDA LIGA ==========
-        { league: "🇵🇹 Portugal Segunda Liga", time: "18:00", home: "Feirense", away: "Torreense", odds1: "2.80", oddsX: "3.00", odds2: "2.38", tip1x2: "1X", btts: "GG", csTip: "1-1", confidence: "Medium", isSure: false },
+        // ========== MOROCCO BOTOLA PRO ==========
+        { league: "🇲🇦 Morocco Botola Pro", time: "16:00", home: "FUS Rabat", away: "CODM Meknès", odds1: "1.90", oddsX: "3.04", odds2: "4.08", tip1x2: "1X", btts: "GG", csTip: "2-1", confidence: "Medium", isSure: false },
+        { league: "🇲🇦 Morocco Botola Pro", time: "18:00", home: "Olympique Safi", away: "Ittihad Tanger", odds1: "2.05", oddsX: "3.02", odds2: "3.56", tip1x2: "X", btts: "GG", csTip: "1-1", confidence: "Low", isSure: false },
+        { league: "🇲🇦 Morocco Botola Pro", time: "18:00", home: "Wydad AC", away: "Yacoub El Mansour", odds1: "1.24", oddsX: "5.00", odds2: "10.70", tip1x2: "1", btts: "NG", csTip: "2-0", confidence: "High", isSure: false },
+        { league: "🇲🇦 Morocco Botola Pro", time: "20:00", home: "Maghreb Fès", away: "Hassania Agadir", odds1: "1.67", oddsX: "3.15", odds2: "5.45", tip1x2: "1X", btts: "NG", csTip: "2-0", confidence: "High", isSure: false },
         
-        // ========== SWEDEN SUPERETTAN ==========
-        { league: "🇸🇪 Sweden Superettan", time: "18:00", home: "IFK Norrkoping", away: "Landskrona BoIS", odds1: "--", oddsX: "--", odds2: "--", tip1x2: "1", btts: "GG", csTip: "2-1", confidence: "High", isSure: false },
+        // ========== SOUTH-AFRICA PREMIER SOCCER LEAGUE (additional) ==========
+        { league: "🇿🇦 South-Africa Premier Soccer League", time: "18:30", home: "Siwelele", away: "Kaizer Chiefs", odds1: "4.01", oddsX: "2.69", odds2: "2.09", tip1x2: "X2", btts: "NG", csTip: "0-2", confidence: "High", isSure: false },
         
-        // ========== SAUDI-ARABIA PRO LEAGUE (additional) ==========
-        { league: "🇸🇦 Saudi-Arabia Pro League", time: "17:00", home: "Al Shabab", away: "Al-Fateh", odds1: "--", oddsX: "--", odds2: "--", tip1x2: "1X", btts: "GG", csTip: "2-1", confidence: "Medium", isSure: false },
-        { league: "🇸🇦 Saudi-Arabia Pro League", time: "17:45", home: "NEOM", away: "Al-Hazm", odds1: "--", oddsX: "--", odds2: "--", tip1x2: "1X", btts: "GG", csTip: "2-1", confidence: "Medium", isSure: false },
-        { league: "🇸🇦 Saudi-Arabia Pro League", time: "19:00", home: "Al Khaleej Saihat", away: "Al Najma", odds1: "--", oddsX: "--", odds2: "--", tip1x2: "1", btts: "GG", csTip: "2-1", confidence: "High", isSure: false },
+        // ========== SAUDI-ARABIA PRO LEAGUE ==========
+        { league: "🇸🇦 Saudi-Arabia Pro League", time: "17:10", home: "Al Taawon", away: "Al-Ittihad FC", odds1: "3.13", oddsX: "3.76", odds2: "2.06", tip1x2: "X2", btts: "GG", csTip: "1-2", confidence: "High", isSure: false },
+        { league: "🇸🇦 Saudi-Arabia Pro League", time: "19:00", home: "Al-Nassr", away: "Al-Ahli Jeddah", odds1: "1.84", oddsX: "3.92", odds2: "3.70", tip1x2: "1X", btts: "GG", csTip: "2-1", confidence: "High", isSure: false },
         
-        // ========== INDONESIA LIGA 1 (additional) ==========
-        { league: "🇮🇩 Indonesia Liga 1", time: "09:30", home: "Arema FC", away: "Persebaya Surabaya", odds1: "--", oddsX: "--", odds2: "--", tip1x2: "1X", btts: "GG", csTip: "1-1", confidence: "Medium", isSure: false },
+        // ========== INDONESIA LIGA 1 ==========
+        { league: "🇮🇩 Indonesia Liga 1", time: "09:30", home: "Persik Kediri", away: "Pusamania Borneo", odds1: "3.40", oddsX: "3.42", odds2: "1.94", tip1x2: "X2", btts: "NG", csTip: "0-2", confidence: "High", isSure: false },
+        { league: "🇮🇩 Indonesia Liga 1", time: "09:30", home: "Semen Padang", away: "Persepam Madura Utd", odds1: "2.37", oddsX: "3.06", odds2: "2.83", tip1x2: "X2", btts: "GG", csTip: "1-2", confidence: "Medium", isSure: false },
+        { league: "🇮🇩 Indonesia Liga 1", time: "13:00", home: "Dewa United", away: "Persijap", odds1: "1.64", oddsX: "3.76", odds2: "4.42", tip1x2: "1X", btts: "GG", csTip: "2-1", confidence: "High", isSure: false },
         
-        // ========== BOLIVIA PRIMERA DIVISIÓN ==========
-        { league: "🇧🇴 Bolivia Primera División", time: "FIN.", home: "Aurora", away: "San Antonio Bulo Bulo", odds1: "2.05", oddsX: "3.75", odds2: "3.00", tip1x2: "1X", btts: "GG", csTip: "2-1", confidence: "High", isSure: false }
+        // ========== SERBIA CUP ==========
+        { league: "🇷🇸 Serbia Cup", time: "17:30", home: "Grafičar", away: "Vojvodina", odds1: "--", oddsX: "--", odds2: "--", tip1x2: "2", btts: "GG", csTip: "1-3", confidence: "High", isSure: false }
     ];
 
     function getConfClass(conf) {
